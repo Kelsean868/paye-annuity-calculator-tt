@@ -1,0 +1,31 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- T&T Flag Background (simplified) -->
+  <rect width="200" height="200" fill="#CE1126"/> <!-- Red field -->
+  <path d="M0 20 L200 200 L180 200 L0 0 Z" fill="#FFFFFF"/> <!-- White fimbriation top -->
+  <path d="M0 40 L200 200 L160 200 L0 10 Z" fill="#000000"/> <!-- Black band -->
+  <path d="M20 200 L0 180 L0 160 L40 200 Z" fill="#FFFFFF"/> <!-- White fimbriation bottom -->
+  <path d="M0 200 L200 0 L200 20 L0 200 Z" fill="#FFFFFF"/> <!-- White fimbriation (alternative if above looks off) -->
+
+
+  <!-- Calculator Body -->
+  <rect x="30" y="40" width="140" height="120" rx="15" ry="15" fill="#D1D5DB" stroke="#6B7280" stroke-width="4"/>
+
+  <!-- Calculator Screen -->
+  <rect x="45" y="55" width="110" height="30" rx="5" ry="5" fill="#F9FAFB" stroke="#9CA3AF" stroke-width="2"/>
+  <text x="100" y="77" font-family="Arial, sans-serif" font-size="16" fill="#1F2937" text-anchor="middle">PAYE</text>
+
+  <!-- Calculator Buttons (simplified) -->
+  <rect x="45" y="95" width="20" height="15" rx="3" ry="3" fill="#6B7280"/>
+  <rect x="75" y="95" width="20" height="15" rx="3" ry="3" fill="#6B7280"/>
+  <rect x="105" y="95" width="20" height="15" rx="3" ry="3" fill="#6B7280"/>
+  <rect x="135" y="95" width="20" height="15" rx="3" ry="3" fill="#4B5563"/>
+
+  <rect x="45" y="120" width="20" height="15" rx="3" ry="3" fill="#6B7280"/>
+  <rect x="75" y="120" width="20" height="15" rx="3" ry="3" fill="#6B7280"/>
+  <rect x="105" y="120" width="20" height="15" rx="3" ry="3" fill="#6B7280"/>
+  <rect x="135" y="120" width="20" height="15" rx="3" ry="3" fill="#4B5563"/>
+  
+  <rect x="45" y="145" width="50" height="15" rx="3" ry="3" fill="#6B7280"/>
+  <rect x="105" y="145" width="20" height="15" rx="3" ry="3" fill="#6B7280"/>
+  <rect x="135" y="145" width="20" height="15" rx="3" ry="3" fill="#25A1AF"/> <!-- Accent color for '=' -->
+</svg>
