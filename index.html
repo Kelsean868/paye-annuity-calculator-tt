@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <!-- Updated Viewport Meta Tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
-    <!-- Google tag (gtag.js) -->
+      
+        <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-60Y93XVP2D"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -14,7 +14,7 @@
 
   gtag('config', 'G-60Y93XVP2D');
 </script>
-    
+
     <!-- SEO Meta Tags -->
     <title>T&T PAYE & Annuity Calculator | Trinidad & Tobago Tax, Retirement Planner</title>
     <meta name="description" content="Free Trinidad & Tobago PAYE calculator and annuity/pension planner. Estimate your take-home pay, NIS, Health Surcharge, and explore tax-saving retirement strategies with expert Kyron Marchan. Plan your financial future in T&T.">
@@ -183,6 +183,7 @@
             .bento-box-paye-results { grid-column: span 2; grid-row: 1 / 2; } 
             #payAllocationChartSection { grid-column: 1 / -1; } 
             .bento-box-annuity-insights { grid-column: 1 / -1; } 
+            #legalSection { grid-column: 1 / -1; }
             .bento-box-cta { grid-column: 1 / -1; }
         }
          @media (min-width: 768px) and (max-width: 1023px) { 
@@ -191,7 +192,7 @@
             }
             .bento-box-financial-details, .bento-box-paye-results { grid-column: span 1; }
              #payAllocationChartSection { grid-column: span 2; }
-            .bento-box-annuity-insights, .bento-box-cta { grid-column: span 2; }
+            .bento-box-annuity-insights, .bento-box-cta, #legalSection { grid-column: span 2; }
         }
         /* Mobile: all bento boxes take full width and stack */
         @media (max-width: 767px) {
@@ -657,6 +658,8 @@
                     </p>
                 </div>
             </section>
+             
+
 
             <!-- CTA Section Updated with Kyron Marchan's Information -->
             <section id="main-cta" class="bento-box bento-box-cta cta-bento-box">
@@ -682,6 +685,39 @@
                         <p class="mt-1">(Kyron Marchan | Local T&T Expert | BIR Approved Plans)</p>
                     </div>
                 </div>
+            </section>
+            <!-- Legal Information Section -->
+            <section id="legalSection" class="bento-box bento-box-annuity-insights hidden">
+                 <h2 class="bento-section-title text-center text-xl md:text-2xl mb-6">Legal Information</h2>
+                 <div class="space-y-4">
+                     <div>
+                         <h3 class="font-semibold text-lg cursor-pointer flex justify-between items-center" data-toggle="disclaimerContent">
+                             <span>Disclaimer</span>
+                             <svg class="w-4 h-4 transition-transform transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+                         </h3>
+                         <div id="disclaimerContent" class="hidden mt-2 text-sm text-[var(--text-muted)] space-y-2">
+                             <p>This calculator is provided for informational and illustrative purposes only. The results are estimates based on the data you provide and current Trinidad and Tobago tax laws (as of June 2025), which are subject to change. They are not intended to be, and should not be construed as, financial, tax, or legal advice.</p>
+                             <p>We do not guarantee the accuracy or applicability of these estimates to your individual circumstances. All financial decisions should be made only after consulting with a qualified and licensed financial advisor, accountant, or legal professional who can assess your specific situation. Reliance on any information provided by this calculator is solely at your own risk.</p>
+                         </div>
+                     </div>
+                      <div class="pt-4 border-t border-[var(--border-color)]">
+                         <h3 class="font-semibold text-lg cursor-pointer flex justify-between items-center" data-toggle="privacyContent">
+                             <span>Privacy Policy</span>
+                              <svg class="w-4 h-4 transition-transform transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+                         </h3>
+                         <div id="privacyContent" class="hidden mt-2 text-sm text-[var(--text-muted)] space-y-2">
+                             <p>This site is committed to protecting your privacy. We do not collect, store, or share any personal financial data you enter into the calculator. All calculations are performed within your browser and are not transmitted to our servers.</p>
+                             <p>We use third-party vendors, including Google, to serve ads when you visit our website. These companies may use information about your visits to this and other websites in order to provide advertisements about goods and services of interest to you.</p>
+                             <ul class="list-disc list-inside ml-4">
+                                 <li>Google's use of advertising cookies enables it and its partners to serve ads to our users based on their visit to our site and/or other sites on the Internet.</li>
+                                 <li>Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" class="text-[var(--primary-accent)] hover:underline">Ads Settings</a>.</li>
+                                 <li>Alternatively, you can opt out of a third-party vendor's use of cookies for personalized advertising by visiting <a href="http://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" class="text-[var(--primary-accent)] hover:underline">www.aboutads.info/choices</a>.</li>
+                             </ul>
+                             <p>We also use Google Analytics to understand our website traffic. This service collects data about visitor behavior in an anonymous form. You can learn more about how Google uses data and how to opt-out by visiting their site.</p>
+                             <p>By using this website, you consent to our privacy policy. This policy was last updated on June 5, 2025.</p>
+                         </div>
+                     </div>
+                 </div>
             </section>
         </div> 
         
@@ -782,6 +818,7 @@
         const resultsSection = document.getElementById('resultsSection');
         const payAllocationChartSection = document.getElementById('payAllocationChartSection'); 
         const annuityInsightsSection = document.getElementById('annuityInsightsSection');
+        const legalSection = document.getElementById('legalSection');
         const financialDetailsBox = document.querySelector('.bento-box-financial-details');
         const payeResultsBox = document.querySelector('.bento-box-paye-results');
         const annuityInsightsBox = document.querySelector('.bento-box-annuity-insights');
@@ -1048,13 +1085,15 @@
             const isResultsVisible = !resultsSection.classList.contains('hidden');
             const isPayAllocationChartVisible = !payAllocationChartSection.classList.contains('hidden');
             const isAnnuityVisible = !annuityInsightsSection.classList.contains('hidden');
+            const isLegalVisible = !legalSection.classList.contains('hidden');
             
             payeResultsBox.style.display = isResultsVisible ? 'block' : 'none';
             payAllocationChartSection.style.display = isPayAllocationChartVisible ? 'block' : 'none';
             annuityInsightsSection.style.display = isAnnuityVisible ? 'block' : 'none';
+            legalSection.style.display = isLegalVisible ? 'block' : 'none';
 
 
-            [financialDetailsBox, payeResultsBox, payAllocationChartSection, annuityInsightsSection, ctaBox].forEach(el => { 
+            [financialDetailsBox, payeResultsBox, payAllocationChartSection, annuityInsightsSection, ctaBox, legalSection].forEach(el => { 
                 el.style.gridColumn = ''; el.style.gridRow = '';
             });
             
@@ -1096,6 +1135,12 @@
 
                 ctaBox.style.gridColumn = '1 / -1'; 
                 ctaBox.style.gridRow = `${nextFullWidthRowStart} / span 1`;
+                nextFullWidthRowStart++;
+
+                if (isLegalVisible) {
+                    legalSection.style.gridColumn = '1 / -1';
+                    legalSection.style.gridRow = `${nextFullWidthRowStart} / span 1`;
+                }
 
 
             } else if (window.innerWidth >= 768) { // Tablet Layout
@@ -1104,6 +1149,7 @@
                  if(isResultsVisible) payeResultsBox.style.gridColumn = 'span 2';
                  if(isPayAllocationChartVisible) payAllocationChartSection.style.gridColumn = 'span 2';
                  if(isAnnuityVisible) annuityInsightsSection.style.gridColumn = 'span 2';
+                 if(isLegalVisible) legalSection.style.gridColumn = 'span 2';
                  ctaBox.style.gridColumn = 'span 2';
             } else { // Mobile Layout
                 bentoGrid.classList.remove('initial-view');
@@ -1111,6 +1157,7 @@
                 if(isResultsVisible) payeResultsBox.style.gridColumn = 'span 1';
                 if(isPayAllocationChartVisible) payAllocationChartSection.style.gridColumn = 'span 1';
                 if(isAnnuityVisible) annuityInsightsSection.style.gridColumn = 'span 1';
+                if(isLegalVisible) legalSection.style.gridColumn = 'span 1';
                 ctaBox.style.gridColumn = 'span 1';
             }
         }
@@ -1474,6 +1521,7 @@
             resultsSection.classList.remove('hidden');
             payAllocationChartSection.classList.remove('hidden'); 
             annuityInsightsSection.classList.remove('hidden');
+            legalSection.classList.remove('hidden'); // Show legal section
             adjustBentoLayout(); 
 
             renderPieChart('payAllocationPieChart', `Your ${frequencyString} Pay Allocation`,
@@ -1814,6 +1862,21 @@
                 }
             }
         }
+        
+        document.querySelectorAll('[data-toggle]').forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const contentId = toggle.getAttribute('data-toggle');
+                const content = document.getElementById(contentId);
+                const icon = toggle.querySelector('svg');
+                if (content.classList.contains('hidden')) {
+                    content.classList.remove('hidden');
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    content.classList.add('hidden');
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
 
         // --- Back to Top and Mobile Scroll Hide/Show ---
         let mobileScrollTimeout;
