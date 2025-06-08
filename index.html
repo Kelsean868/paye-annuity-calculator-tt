@@ -1,52 +1,42 @@
 <!DOCTYPE html>
-<html lang="en-TT"> <!-- Added language and region -->
+<html lang="en-TT" class="scroll-smooth"> 
 <head>
     <meta charset="UTF-8">
-    <!-- Updated Viewport Meta Tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-      
-        <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-60Y93XVP2D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-60Y93XVP2D"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-60Y93XVP2D');
-</script>
-
-    <!-- SEO Meta Tags -->
+      gtag('config', 'G-60Y93XVP2D');
+    </script>
+    
     <title>T&T PAYE & Annuity Calculator | Trinidad & Tobago Tax, Retirement Planner</title>
     <meta name="description" content="Free Trinidad & Tobago PAYE calculator and annuity/pension planner. Estimate your take-home pay, NIS, Health Surcharge, and explore tax-saving retirement strategies with expert Kyron Marchan. Plan your financial future in T&T.">
     <meta name="keywords" content="Trinidad and Tobago PAYE calculator, T&T tax calculator, annuity planner Trinidad, retirement planning T&T, NIS calculator, Health Surcharge T&T, take-home pay calculator Trinidad, financial planner T&T, BIR T&T, Kyron Marchan, tatil, tatil life, pension plan calculator">
     <meta name="author" content="Kyron Marchan">
     <link rel="canonical" href="https://kelsean868.github.io/paye-annuity-calculator-tt/"> 
-
-    <!-- Open Graph Meta Tags (for Facebook, LinkedIn, etc.) -->
     <meta property="og:title" content="T&T PAYE & Annuity Calculator | Trinidad & Tobago Tax, Retirement Planner">
     <meta property="og:description" content="Free Trinidad & Tobago PAYE calculator and annuity/pension planner. Estimate your take-home pay, NIS, Health Surcharge, and explore tax-saving retirement strategies.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://kelsean868.github.io/paye-annuity-calculator-tt/"> 
-    <meta property="og:image" content="https://raw.githubusercontent.com/Kelsean868/paye-annuity-calculator-tt/refs/heads/main/tt-calculator-icon%202.png"> 
-    <meta property="og:image:width" content="1200"> <!-- Standard OG image width -->
-    <meta property="og:image:height" content="630"> <!-- Standard OG image height -->
+    <meta property="og:image" content="https://raw.githubusercontent.com/Kelsean868/paye-annuity-calculator-tt/refs/heads/main/contact%20photo.jpeg"> 
     <meta property="og:site_name" content="T&T PAYE & Annuity Planner">
     <meta property="og:locale" content="en_TT">
 
-    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="T&T PAYE & Annuity Calculator | Trinidad & Tobago Tax, Retirement Planner">
     <meta name="twitter:description" content="Free Trinidad & Tobago PAYE calculator and annuity/pension planner. Estimate your take-home pay, NIS, Health Surcharge, and explore tax-saving retirement strategies.">
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/Kelsean868/paye-annuity-calculator-tt/refs/heads/main/tt-calculator-icon%202.png"> 
-    <!-- <meta name="twitter:site" content="@yourtwitterhandle"> --> <!-- Optional: Your Twitter handle -->
-    <!-- <meta name="twitter:creator" content="@kyronmarchan"> --> <!-- Optional: Creator's Twitter handle -->
-
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/Kelsean868/paye-annuity-calculator-tt/refs/heads/main/contact%20photo.jpeg"> 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Source+Serif+Pro:wght@600;700&display=swap" rel="stylesheet">
     
-    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -136,7 +126,7 @@
             line-height: var(--line-height-relaxed);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden; /* Prevent horizontal scroll on body */
+            overflow-x: hidden;
         }
         
         .page-title { font-family: var(--font-heading); color: var(--primary-accent); font-weight: 700; }
@@ -175,38 +165,58 @@
             box-shadow: var(--shadow-strong);
         }
 
-        @media (min-width: 1024px) { 
-            .bento-grid-container {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .bento-box-financial-details { grid-column: span 1; grid-row: 1 / 2; } 
-            .bento-box-paye-results { grid-column: span 2; grid-row: 1 / 2; } 
-            #payAllocationChartSection { grid-column: 1 / -1; } 
-            .bento-box-annuity-insights { grid-column: 1 / -1; } 
-            #legalSection { grid-column: 1 / -1; }
-            .bento-box-cta { grid-column: 1 / -1; }
+        .fade-in-on-scroll {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-         @media (min-width: 768px) and (max-width: 1023px) { 
-            .bento-grid-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .bento-box-financial-details, .bento-box-paye-results { grid-column: span 1; }
-             #payAllocationChartSection { grid-column: span 2; }
-            .bento-box-annuity-insights, .bento-box-cta, #legalSection { grid-column: span 2; }
-        }
-        /* Mobile: all bento boxes take full width and stack */
-        @media (max-width: 767px) {
-            .bento-box {
-                 grid-column: span 1 / span 1 !important; 
-            }
-            #annuityInsightsSection > div.rounded-lg { 
-                 padding-left: 0.5rem; 
-                 padding-right: 0.5rem;
-            }
+        .fade-in-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
+        .hidden-section {
+            display: none;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 color-mix(in srgb, var(--secondary-accent) 40%, transparent); }
+            70% { transform: scale(1.03); box-shadow: 0 0 0 10px rgba(255, 121, 63, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 121, 63, 0); }
+        }
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        #scrollNudge {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes glow-nudge {
+            0%, 100% {
+                transform: translateY(0);
+                box-shadow: 0 0 5px color-mix(in srgb, var(--primary-accent) 0%, transparent);
+            }
+            50% {
+                transform: translateY(-2px);
+                box-shadow: 0 0 10px color-mix(in srgb, var(--primary-accent) 50%, transparent);
+            }
+        }
+        .glow-nudge-animation {
+            animation: glow-nudge 2.5s infinite;
+        }
 
-        /* Tooltip */
         .tooltip { position: relative; display: inline-block; }
         .tooltip .tooltiptext {
             visibility: hidden; width: 260px; background-color: var(--text-primary); color: var(--bg-bento-box); text-align: center; 
@@ -218,32 +228,21 @@
             content: ""; position: absolute; top: 100%; left: 50%; margin-left: -6px;
             border-width: 6px; border-style: solid; border-color: var(--text-primary) transparent transparent transparent;
         }
-        .tooltip:hover .tooltiptext, .info-icon:focus + .tooltiptext { /* Show on focus for accessibility */
-            visibility: visible; 
-            opacity: 1; 
-        }
+        .tooltip:hover .tooltiptext { visibility: visible; opacity: 1; }
 
-        /* Scrollbar */
         ::-webkit-scrollbar { width: 9px; }
         ::-webkit-scrollbar-track { background: var(--bg-accent); border-radius: 10px; }
         ::-webkit-scrollbar-thumb { background: var(--secondary-accent); border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--secondary-accent-darker); }
 
-        /* Info Icon */
         .info-icon {
             display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px;
             background-color: var(--primary-accent); color: var(--bg-bento-box); border-radius: 50%;
             font-size: 11px; font-weight: 600; cursor: pointer; margin-left: 6px;
             transition: background-color 0.2s ease, transform 0.2s ease;
         }
-        .info-icon:hover, .info-icon:focus { /* Add focus style */
-            background-color: var(--primary-accent-darker); 
-            transform: scale(1.15); 
-            outline: 2px solid var(--secondary-accent); /* Example focus outline */
-            outline-offset: 2px;
-        }
+        .info-icon:hover { background-color: var(--primary-accent-darker); transform: scale(1.15); }
 
-        /* Modal */
         .modal {
             display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%;
             overflow: auto; background-color: rgba(29, 45, 53, 0.7); padding-top: 5vh; 
@@ -259,7 +258,6 @@
         }
         .modal-close:hover, .modal-close:focus { color: var(--text-primary); text-decoration: none; cursor: pointer; }
 
-        /* Recommendation Card */
         .recommendation-card {
             border: 1px solid var(--border-color); 
             border-left: 5px solid var(--secondary-accent);
@@ -269,8 +267,6 @@
         }
         .recommendation-card:hover { transform: scale(1.02); }
 
-
-        /* Chart Styling Modifications */
         .chart-container { 
             position: relative;
             height: 320px; 
@@ -279,55 +275,24 @@
             background-color: var(--bg-secondary);
             border-radius: 0.625rem;
             padding: 0.75rem; 
+            border: 1px solid var(--border-color);
             transition: background-color 0.3s ease, border-color 0.3s ease;
             touch-action: pan-y; 
             overflow: hidden; 
         }
         .pie-chart-container { 
-            height: 380px; /* Increased height for larger pie charts */
+            height: 320px; 
         } 
-        .charts-view-wrapper { margin-top: 1.75rem; }
-
-        @media (max-width: 767px) {
-            .bento-box { 
-                padding-left: 0.75rem; 
-                padding-right: 0.75rem;
-            }
-            #annuityInsightsSection > div.rounded-lg { 
-                 padding-left: 0.5rem; 
-                 padding-right: 0.5rem;
-            }
-            .recommendation-card { 
-                padding-left: 0.5rem; 
-                padding-right: 0.5rem;
-                padding-top: 1rem;
-                padding-bottom: 1rem;
-            }
-            .chart-container {
-                height: 260px; 
-                padding: 0.25rem; 
-            }
-            .pie-chart-container {
-                height: 300px; 
-            }
-            .chart-container canvas {
-                max-width: 100%; 
-                height: auto !important; 
-            }
-             .chartjs-size-monitor {
-                overflow: visible !important; 
-            }
-            .chart-legend { 
-                flex-wrap: wrap;
-                gap: 10px; 
-             }
-            .charts-view-wrapper #taxSavingsView > .grid {
-                 grid-template-columns: 1fr;
-            }
+        .charts-view-wrapper { 
+            margin-top: 1.75rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        .charts-view-wrapper.is-visible {
+            max-height: 1000px; /* Large enough to not clip content */
         }
 
-
-        /* Dynamic Quote Display */
         #dynamicQuoteDisplay {
             min-height: 4.25em; transition: opacity 0.5s ease-in-out, background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
             opacity: 1; padding: 1.5rem; background-color: var(--bg-accent); border-left: 5px solid var(--secondary-accent);
@@ -336,7 +301,6 @@
         }
         #dynamicQuoteDisplay.fade-out { opacity: 0; }
 
-        /* Final CTA Section (as a bento box) */
         .cta-bento-box {
             background: linear-gradient(135deg, var(--primary-accent) 0%, var(--primary-accent-darker) 100%);
             color: white; 
@@ -347,13 +311,11 @@
         .dark-mode .cta-bento-box p, .dark-mode .cta-bento-box h2, .dark-mode .cta-bento-box a { color: #fff; }
          .cta-bento-box a:hover { color: var(--secondary-accent); } 
 
-
-        /* Input and Button Styling */
         input[type="number"], select,
         #customQuoteModal input[type="text"], #customQuoteModal input[type="tel"] {
             border: 1px solid var(--border-color); padding: 0.85rem 1.15rem; border-radius: 0.375rem; 
             transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease, color 0.3s ease;
-            font-size: 16px;  /* Prevents iOS auto-zoom */
+            font-size: 16px;
             background-color: var(--bg-secondary); color: var(--text-primary);
             font-weight: 500;
         }
@@ -364,64 +326,43 @@
         }
         .button-base {
             font-weight: 600; padding-top: 0.85rem; padding-bottom: 0.85rem; border-radius: 0.375rem;
-            transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+            transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease, opacity 0.2s ease;
             box-shadow: var(--shadow-soft); text-transform: uppercase; letter-spacing: 0.025em;
             font-family: var(--font-body);
             touch-action: manipulation; 
         }
         .button-base:hover { transform: translateY(-2px); box-shadow: var(--shadow-medium); }
-        
-        .main-calc-button { 
-            background-color: var(--primary-accent); color: white; font-size: 1rem; 
+        .button-base:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: var(--shadow-soft);
         }
+        
+        .main-calc-button { background-color: var(--primary-accent); color: white; font-size: 1rem; }
         .dark-mode .main-calc-button { color: var(--bg-bento-box); }
-        .main-calc-button:hover { background-color: var(--primary-accent-darker); }
+        .main-calc-button:hover:not(:disabled) { background-color: var(--primary-accent-darker); }
         
-        .secondary-action-button { 
-            background-color: var(--secondary-accent); color: white; 
-        }
+        .secondary-action-button { background-color: var(--secondary-accent); color: white; }
         .dark-mode .secondary-action-button { color: var(--text-primary); }
-        .secondary-action-button:hover { background-color: var(--secondary-accent-darker); }
+        .secondary-action-button:hover:not(:disabled) { background-color: var(--secondary-accent-darker); }
         
-        .tertiary-action-button { 
-            background-color: var(--bg-accent); color: var(--text-secondary); border: 1px solid var(--border-color); 
-        }
-        .tertiary-action-button:hover { background-color: color-mix(in srgb, var(--bg-accent) 80%, #000); }
+        .tertiary-action-button { background-color: var(--bg-accent); color: var(--text-secondary); border: 1px solid var(--border-color); }
+        .tertiary-action-button:hover:not(:disabled) { background-color: color-mix(in srgb, var(--bg-accent) 80%, #000); }
         
-        .final-cta-button { 
-             background-color: var(--secondary-accent); color: white; 
-             font-weight: 700; font-size: 1rem; padding: 0.9rem 1.5rem;
-        }
+        .final-cta-button { background-color: var(--secondary-accent); color: white; font-weight: 700; font-size: 1rem; padding: 0.9rem 1.5rem; }
         .dark-mode .final-cta-button { color: var(--text-primary); }
         .final-cta-button:hover { background-color: var(--secondary-accent-darker); }
 
-        /* Result Item & Take Home Pay Card */
         .result-item {
             background-color: var(--bg-accent); padding: 0.85rem; border-radius: 0.375rem; border: 1px solid var(--border-color);
             transition: background-color 0.3s ease, border-color 0.3s ease;
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            text-align: center; 
+            display: flex; flex-direction: column; align-items: center; text-align: center; 
         }
-         .result-item strong { 
-            display: block; 
-            width: 100%;
-        }
-        /* PAYE Snapshot result items - using new variables */
-        .result-item-paye-emphasis {
-            background-color: var(--paye-emphasis-light-bg);
-            color: var(--paye-emphasis-color);
-        }
-        .result-item-paye-emphasis-bold {
-            background-color: var(--paye-emphasis-medium-bg);
-            color: var(--paye-emphasis-color);
-            font-weight: 700;
-        }
-        .dark-mode .result-item-paye-emphasis-bold { 
-             color: var(--text-primary); 
-        }
-
+         .result-item strong { display: block; width: 100%; }
+        .result-item-paye-emphasis { background-color: var(--paye-emphasis-light-bg); color: var(--paye-emphasis-color); }
+        .result-item-paye-emphasis-bold { background-color: var(--paye-emphasis-medium-bg); color: var(--paye-emphasis-color); font-weight: 700; }
+        .dark-mode .result-item-paye-emphasis-bold { color: var(--text-primary); }
 
         .take-home-pay-card {
             background-color: var(--success-color-light); padding: 1.5rem; border-radius: 0.625rem; border: 1px solid var(--success-color);
@@ -435,47 +376,132 @@
 
         #customQuoteModal label { font-weight: 600; color: var(--text-secondary); }
         
-        /* Theme Toggle Switch */
         .theme-switch-wrapper { 
             display: flex; 
             align-items: center; 
             background-color: var(--bg-bento-box); 
             padding: 0.5rem 0.75rem; 
             border-radius: 999px; 
-            box-shadow: var(--shadow-soft); 
+            box-shadow: var(--shadow-medium); 
             border: 1px solid var(--border-color);
         }
-      
         .theme-switch { position: relative; display: inline-block; width: 40px; height: 20px;  touch-action: manipulation; } 
         .theme-switch input { opacity: 0; width: 0; height: 0; }
-        .slider {
-            position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
-            background-color: #ccc; transition: .4s; border-radius: 20px;
-        }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 20px; }
         .dark-mode .slider { background-color: var(--primary-accent); }
-        .slider:before {
-            position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; 
-            background-color: white; transition: .4s; border-radius: 50%;
-        }
+        .slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
         input:checked + .slider:before { transform: translateX(20px); } 
         #themeToggleLabel { color: var(--text-secondary); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.025em;}
-
-        /* Mobile Floating Buttons */
-        .mobile-floating-button {
-            transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+        
+        #stickyNav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            transform: translateY(-100%);
         }
-        .mobile-floating-button.hidden-by-scroll { /* For JS to toggle opacity/visibility */
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
+        #stickyNav.is-visible {
+            transform: translateY(0);
+            box-shadow: var(--shadow-medium);
+        }
+        #stickyNav a {
+            transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+            border-bottom: 2px solid transparent;
+        }
+        #stickyNav a.active {
+            color: var(--secondary-accent);
+            border-bottom-color: var(--secondary-accent);
+            font-weight: 700;
+        }
+        
+        .savings-highlight {
+            display: inline-block;
+            background-color: color-mix(in srgb, var(--secondary-accent) 20%, transparent);
+            border: 1px solid var(--secondary-accent);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--secondary-accent-darker);
+        }
+        .dark-mode .savings-highlight {
+             color: var(--secondary-accent);
+        }
+        
+        .whatsapp-fab {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: #FFF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 9999; /* Ensure it is on top */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .whatsapp-fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+        .whatsapp-fab svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+        
+        /* Mobile-specific adjustments */
+        @media (max-width: 1023px) {
+            #stickyNav {
+                display: none;
+            }
+        }
+        @media (max-width: 767px) {
+            .bento-box { 
+                padding-left: 0.75rem; 
+                padding-right: 0.75rem;
+            }
+            #annuityInsightsSection > div:first-child { 
+                 padding-left: 0rem;
+                 padding-right: 0rem;
+            }
+            .recommendation-card { 
+                padding-left: 0.5rem; 
+                padding-right: 0.5rem;
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
+            .chart-container, .pie-chart-container {
+                height: 260px; 
+                padding: 0.25rem; 
+            }
+            .charts-view-wrapper #taxSavingsView > .grid {
+                 grid-template-columns: 1fr;
+            }
         }
 
     </style>
 </head>
 <body class="min-h-screen p-4 md:p-6 lg:p-8 selection:bg-amber-500 selection:text-white">
+    <a href="https://wa.me/18683278273?text=Hello%20Kyron,%20I'd%20like%20to%20discuss%20my%20financial%20plan%20after%20using%20the%20calculator." target="_blank" class="whatsapp-fab" aria-label="Chat on WhatsApp">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img"><path d=" M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.044-.53-.044-.33 0-.545.015-.765.015h-.214c-.015 0-.33.044-.66.33-.372.33-.945.99-1.146 1.963-.128.58-.27 1.16-.27 1.842 0 1.288.36 2.403.945 3.488.58 1.085 2.512 3.34 4.814 4.314 2.05 1.04 3.51 1.25 4.314 1.25.143 0 .832-.214 1.146-.66.27-.372.99-.945.99-1.962s-.27-.817-.545-1.146c-.27-.33-.545-.33-.817-.33h-.53z M16 4.437c6.39 0 11.562 5.17 11.562 11.563 0 6.39-5.17 11.562-11.563 11.562-2.062 0-3.99-.545-5.63-1.518l-5.973 1.518 1.518-5.972c-1.04-1.63-1.63-3.6-1.63-5.59 0-6.39 5.17-11.563 11.563-11.563z M16 .002C7.163.002 0 7.165 0 16.002c0 3.016.817 5.86 2.336 8.2l-2.336 9.172 9.172-2.336c2.34 1.518 5.186 2.336 8.13 2.336 8.84 0 16-7.164 16-16S24.842.002 16 .002z"></path></svg>
+    </a>
 
-    <div class="w-full max-w-6xl mx-auto my-8"> 
-        <header class="mb-10 md:mb-14 text-center relative"> 
+    <div id="scrollNudge" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 transition-opacity duration-300 opacity-0 pointer-events-none">
+      <div class="w-10 h-10 bg-[var(--primary-accent)] rounded-full flex items-center justify-center shadow-lg opacity-50">
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+      </div>
+    </div>
+
+
+    <div class="w-full max-w-6xl mx-auto my-8">
+        <header class="mb-10 md:mb-14 text-center" id="pageHeader">
             <h1 class="page-title text-4xl sm:text-5xl md:text-6xl mb-3">
                 Smart Money Hub for T&T
             </h1>
@@ -485,24 +511,38 @@
             <p class="text-[var(--text-secondary)] mt-5 text-md md:text-lg max-w-3xl mx-auto">
                 Easily figure out your T&T money. See your take-home pay, find smart ways to save with annuities, and plan for a comfy retirement.
             </p>
-        </header>
-        <!-- Moved Theme Toggle Wrapper to be after header, before bento grid, and centered -->
-        <div class="w-full flex justify-center my-4 md:my-6">
-            <div class="theme-switch-wrapper">
+            <div class="theme-switch-wrapper w-fit mx-auto mt-6 lg:fixed lg:top-6 lg:right-6 z-[101] lg:mt-0">
                 <span class="mr-2 text-xs" id="themeToggleLabel">LIGHT</span>
                 <label class="theme-switch" for="themeToggleCheckbox">
                     <input type="checkbox" id="themeToggleCheckbox" />
                     <div class="slider round"></div>
                 </label>
             </div>
-        </div>
+        </header>
+
+        <nav id="stickyNav" class="bg-[var(--bg-bento-box)] mb-8 rounded-lg">
+            <div class="w-full max-w-4xl mx-auto px-4">
+                <div class="flex justify-center space-x-4 md:space-x-8">
+                    <a href="#resultsSection" class="nav-link text-sm font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] py-3">Pay Breakdown</a>
+                    <a href="#annuityInsightsSection" class="nav-link text-sm font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] py-3">Annuity Plans</a>
+                    <a href="#main-cta" class="nav-link text-sm font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] py-3">Get Advice</a>
+                    <a href="#legalSection" class="nav-link hidden md:inline-block text-sm font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] py-3">Legal</a>
+                </div>
+            </div>
+        </nav>
 
 
-        <div class="bento-grid-container initial-view" id="bentoGrid">
-            <section class="bento-box bento-box-financial-details space-y-6">
-                <h2 class="bento-section-title text-center text-xl md:text-2xl"><span class="bento-step-indicator">1</span>Tell Us About Your Finances</h2> <!-- Centered Title -->
+        <div id="main-content-grid" class="space-y-8">
+            <section class="bento-box bento-box-financial-details space-y-6" id="financialDetailsSection">
+                <h2 class="bento-section-title text-center text-xl md:text-2xl"><span class="bento-step-indicator">1</span>Tell Us About Your Finances</h2>
                 <div>
-                    <label for="age" class="block text-sm font-medium text-[var(--text-secondary)] mb-1.5">Your Age Now</label>
+                    <label for="age" class="block text-sm font-medium text-[var(--text-secondary)] mb-1.5">
+                        Your Age Now
+                         <span class="tooltip inline-block">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill text-gray-400 inline-block ml-1" viewBox="0 0 16 16"><path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg>
+                            <span class="tooltiptext">Your data is kept private and is not stored or shared.</span>
+                        </span>
+                    </label>
                     <input type="number" id="age" name="age" placeholder="e.g., 35" class="mt-1 block w-full">
                 </div>
                 <div>
@@ -516,25 +556,28 @@
                 </div>
                 <div>
                     <label for="grossIncome" id="grossIncomeLabel" class="block text-sm font-medium text-[var(--text-secondary)] mb-1.5">
-                        Your Gross Pay (before anything's taken out, per pay period)
+                        Your Gross Pay
+                         <span class="tooltip inline-block">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill text-gray-400 inline-block ml-1" viewBox="0 0 16 16"><path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg>
+                            <span class="tooltiptext">Your data is kept private and is not stored or shared.</span>
+                        </span>
                         <div class="tooltip inline-block">
-                            <span class="info-icon" tabindex="0" aria-label="More information about Gross Pay">?</span> <!-- Added tabindex and aria-label -->
-                            <span class="tooltiptext" id="grossIncomeTooltipText">Your total earnings before any deductions, for the frequency selected above.</span>
+                            <span class="info-icon">?</span>
+                            <span class="tooltiptext">Your total earnings before any deductions, for the frequency selected above.</span>
                         </div>
                     </label>
-                    <input type="number" id="grossIncome" name="grossIncome" placeholder="TTD" class="mt-1 block w-full" aria-describedby="grossIncomeTooltipText">
+                    <input type="number" id="grossIncome" name="grossIncome" placeholder="TTD" class="mt-1 block w-full">
                 </div>
 
-                <!-- New Annuity/Pension Branching Logic -->
                 <div>
                     <label for="hasAnnuityProduct" class="block text-sm font-medium text-[var(--text-secondary)] mb-1.5">
                         Do you save in a Registered Annuity or Company Pension?
                         <div class="tooltip inline-block">
-                             <span class="info-icon" tabindex="0" aria-label="More information about Registered Annuity or Company Pension">?</span>
-                            <span class="tooltiptext" id="hasAnnuityTooltipText">If your annuity or pension helps lower your taxes, it's probably 'Registered'.</span>
+                            <span class="info-icon">?</span>
+                            <span class="tooltiptext">If your annuity or pension helps lower your taxes, it's probably 'Registered'.</span>
                         </div>
                     </label>
-                    <select id="hasAnnuityProduct" name="hasAnnuityProduct" class="mt-1 block w-full" aria-describedby="hasAnnuityTooltipText">
+                    <select id="hasAnnuityProduct" name="hasAnnuityProduct" class="mt-1 block w-full">
                         <option value="no" selected>No</option>
                         <option value="yes">Yes</option>
                     </select>
@@ -544,8 +587,8 @@
                     <label class="block text-sm font-medium text-[var(--text-secondary)] mb-1.5">
                         Your Company Pension Savings (what YOU pay from your salary)
                          <div class="tooltip inline-block">
-                            <span class="info-icon" tabindex="0" aria-label="More information about Company Pension Savings">?</span>
-                            <span class="tooltiptext" id="companyPensionTooltipText">Enter ONLY your contribution from your salary, not your employer's match or the total. This helps lower your taxes.</span>
+                            <span class="info-icon">?</span>
+                            <span class="tooltiptext">Enter ONLY your contribution from your salary, not your employer's match or the total. This helps lower your taxes.</span>
                         </div>
                     </label>
                     <div class="mt-1 flex space-x-4 mb-2">
@@ -561,11 +604,11 @@
 
                     <div id="companyPensionAmountContainer">
                          <label for="companyPension" id="companyPensionAmountLabel" class="block text-xs font-medium text-[var(--text-secondary)] mb-1">Contribution Amount (per pay period)</label>
-                        <input type="number" id="companyPension" name="companyPension" placeholder="TTD (per pay period)" class="mt-1 block w-full" aria-describedby="companyPensionTooltipText">
+                        <input type="number" id="companyPension" name="companyPension" placeholder="TTD (per pay period)" class="mt-1 block w-full">
                     </div>
                     <div id="companyPensionPercentageContainer" class="hidden">
                         <label for="companyPensionPercentage" class="block text-xs font-medium text-[var(--text-secondary)] mb-1">Contribution Percentage</label>
-                        <input type="number" id="companyPensionPercentage" name="companyPensionPercentage" placeholder="% of Gross Pay (e.g., 5)" class="mt-1 block w-full text-sm" aria-describedby="companyPensionTooltipText">
+                        <input type="number" id="companyPensionPercentage" name="companyPensionPercentage" placeholder="% of Gross Pay (e.g., 5)" class="mt-1 block w-full text-sm">
                     </div>
                 </div>
 
@@ -573,167 +616,146 @@
                     <label for="personalAnnuity" id="personalAnnuityLabel" class="block text-sm font-medium text-[var(--text-secondary)] mb-1.5">
                         Your Personal Registered Annuity Savings (per pay period)
                          <div class="tooltip inline-block">
-                            <span class="info-icon" tabindex="0" aria-label="More information about Personal Annuity Savings">?</span>
-                            <span class="tooltiptext" id="personalAnnuityTooltipText">How much you save in your own BIR-approved annuity, for that pay period.</span>
+                            <span class="info-icon">?</span>
+                            <span class="tooltiptext">How much you save in your own BIR-approved annuity, for that pay period.</span>
                         </div>
                     </label>
-                    <input type="number" id="personalAnnuity" name="personalAnnuity" placeholder="TTD (per pay period)" class="mt-1 block w-full" aria-describedby="personalAnnuityTooltipText">
+                    <input type="number" id="personalAnnuity" name="personalAnnuity" placeholder="TTD (per pay period)" class="mt-1 block w-full">
                 </div>
-                <!-- End of New Annuity/Pension Branching Logic -->
                 
                 <button id="calculateButton" class="w-full main-calc-button button-base text-white py-3 px-4 mt-4">
                     Show Me My Plan!
                 </button>
             </section>
-
-            <section id="resultsSection" class="bento-box bento-box-paye-results space-y-6 hidden">
-                <h2 class="bento-section-title text-center text-xl md:text-2xl"><span class="bento-step-indicator">2</span>Your Pay Breakdown (<span id="resultsFrequencyDisplay"></span>)</h2> <!-- Centered Title -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-3 text-xs sm:text-sm"> 
-                    <div class="result-item flex flex-col items-center"><div class="mb-0.5"><strong><span id="labelGrossIncome">Your Gross Pay</span>:</strong></div> <span id="resGrossIncomeSelectedFreq"></span></div>
-                    <div class="result-item flex flex-col items-center"><div class="mb-0.5"><strong><span id="labelPersonalAllowance">Your Tax-Free Allowance</span>:</strong></div> <span id="resPersonalAllowanceSelectedFreq"></span></div>
-                    <div class="result-item flex flex-col items-center"><div class="mb-0.5"><strong><span id="labelTotalNIS">Your Total NIS Payment</span>:</strong></div> <span id="resTotalNISSelectedFreq"></span></div>
-                    <div class="result-item flex flex-col items-center"><div class="mb-0.5"><strong><span id="labelDeductibleNIS">NIS Part That Lowers Tax</span>:</strong></div> <span id="resDeductibleNISSelectedFreq"></span></div>
-                    <div class="result-item flex flex-col items-center"><div class="mb-0.5"><strong><span id="labelDeductibleRegAnnuity">Annuity/Pension That Lowers Tax</span>:</strong></div> <span id="resDeductibleRegAnnuitySelectedFreq"></span></div>
-                    <div class="result-item flex flex-col items-center"><div class="mb-0.5"><strong><span id="labelTotalDeductions">Total Tax-Lowering Deductions</span>:</strong></div> <span id="resTotalDeductionsSelectedFreq"></span></div>
-                    <div class="result-item result-item-paye-emphasis font-semibold flex flex-col items-center"><div class="mb-0.5"><strong><span id="labelTaxableIncome">Income You Pay Tax On</span>:</strong></div> <span id="resTaxableIncomeSelectedFreq"></span></div>
-                    <div class="result-item result-item-paye-emphasis flex flex-col items-center"><div class="mb-0.5"><strong><span id="labelHealthSurcharge">Health Surcharge Payment</span>:</strong></div> <span id="resHealthSurchargeSelectedFreq"></span></div>
-                    <div class="result-item result-item-paye-emphasis-bold flex flex-col items-center"><div class="mb-0.5"><strong><span id="labelIncomeTax">Income Tax Payable</span>:</strong></div> <span id="resIncomeTaxSelectedFreq"></span></div>
-                    <div class="result-item result-item-paye-emphasis-bold flex flex-col items-center"><div class="mb-0.5"><strong><span id="labelTotalPAYE">Total PAYE (Tax + NIS + Health)</span>:</strong></div> <span id="resTotalPAYESelectedFreq"></span></div>
-                </div>
-                 <div class="mt-6 p-5 take-home-pay-card text-center">
-                    <p class="text-lg font-semibold label" id="labelAnnualTakeHomePay">Your Estimated Annual Take-Home Pay</p>
-                    <p class="text-3xl md:text-4xl font-bold amount mt-1" id="resAnnualTakeHomePay"></p>
-                    <p class="text-md font-medium label mt-3" id="labelTakeHomePaySelectedFreq">Your Take-Home Pay (per pay period)</p> <!-- Added mt-3 for spacing -->
-                    <p class="text-xl md:text-2xl font-bold amount" id="resTakeHomePaySelectedFreq"></p>
-                </div>
-            </section>
-
-            <!-- New Pay Allocation Chart Section -->
-            <section id="payAllocationChartSection" class="bento-box bento-box-annuity-insights hidden"> 
-                 <h2 class="bento-section-title text-center text-xl md:text-2xl mb-6"><span class="bento-step-indicator">3</span>Your Detailed Pay Allocation (<span id="payAllocationFrequencyDisplay"></span>)</h2>
-                 <div class="chart-container pie-chart-container mx-auto"> 
-                     <canvas id="payAllocationPieChart"></canvas>
-                 </div>
-                 <p class="text-center text-sm text-[var(--text-muted)] mt-2">Hover or tap on slices to see details.</p>
-            </section>
-        
-            <section id="annuityInsightsSection" class="bento-box bento-box-annuity-insights hidden">
-                 <h2 class="bento-section-title text-center text-xl md:text-2xl mb-6"><span class="bento-step-indicator">4</span>Smart Annuity Plans & How They Grow</h2> <!-- Updated Step Indicator -->
-                <div class="py-5 px-0 sm:px-5 md:p-6 rounded-lg md:bg-[var(--bg-secondary)]"> 
-                    <div id="existingAnnuityInsight" class="mb-7 pb-7 border-b border-[var(--border-color)]"></div>
-                    
-                    <h3 id="exploreFurtherHeading" class="text-lg md:text-xl font-semibold text-[var(--success-color)] mt-5 mb-3">Your Custom Annuity Growth Plans:</h3>
-                    <p id="exploreFurtherIntro" class="text-[var(--text-secondary)] text-sm mb-6">See how saving a bit more can boost your retirement fund. Click a plan to see the numbers.</p>
-                    
-                    <div id="annuityRecommendationsContainer" class="space-y-6">
+            
+            <div id="results-wrapper" class="hidden">
+                <div class="lg:grid lg:grid-cols-2 lg:gap-8 space-y-8 lg:space-y-0">
+                    <section class="bento-box bento-box-paye-results space-y-6 lg:col-span-1" id="resultsSection">
+                        <h2 id="payBreakdownTitle" class="bento-section-title text-center text-xl md:text-2xl"><span class="bento-step-indicator">2</span>Your Pay Breakdown</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-3 text-xs sm:text-sm"> 
+                            <div class="result-item flex flex-col items-center"><div class="mb-0.5"><strong><span id="labelGrossIncome">Your Gross Pay</span>:</strong></div> <span id="resGrossIncomeSelectedFreq"></span></div>
+                            <div class="result-item flex flex-col items-center"><div class="mb-0.5"><strong><span id="labelPersonalAllowance">Your Tax-Free Allowance</span>:</strong></div> <span id="resPersonalAllowanceSelectedFreq"></span></div>
+                            <div class="result-item flex flex-col items-center"><div class="mb-0.5"><strong><span id="labelTotalNIS">Your Total NIS Payment</span>:</strong></div> <span id="resTotalNISSelectedFreq"></span></div>
+                            <div class="result-item flex flex-col items-center"><div class="mb-0.5"><strong><span id="labelDeductibleNIS">NIS Part That Lowers Tax</span>:</strong></div> <span id="resDeductibleNISSelectedFreq"></span></div>
+                            <div class="result-item flex flex-col items-center"><div class="mb-0.5"><strong><span id="labelDeductibleRegAnnuity">Annuity/Pension That Lowers Tax</span>:</strong></div> <span id="resDeductibleRegAnnuitySelectedFreq"></span></div>
+                            <div class="result-item flex flex-col items-center"><div class="mb-0.5"><strong><span id="labelTotalDeductions">Total Tax-Lowering Deductions</span>:</strong></div> <span id="resTotalDeductionsSelectedFreq"></span></div>
+                            <div class="result-item result-item-paye-emphasis font-semibold flex flex-col items-center"><div class="mb-0.5"><strong><span id="labelTaxableIncome">Income You Pay Tax On</span>:</strong></div> <span id="resTaxableIncomeSelectedFreq"></span></div>
+                            <div class="result-item result-item-paye-emphasis flex flex-col items-center"><div class="mb-0.5"><strong><span id="labelHealthSurcharge">Health Surcharge Payment</span>:</strong></div> <span id="resHealthSurchargeSelectedFreq"></span></div>
+                            <div class="result-item result-item-paye-emphasis-bold flex flex-col items-center"><div class="mb-0.5"><strong><span id="labelIncomeTax">Income Tax Payable</span>:</strong></div> <span id="resIncomeTaxSelectedFreq"></span></div>
+                            <div class="result-item result-item-paye-emphasis-bold flex flex-col items-center"><div class="mb-0.5"><strong><span id="labelTotalPAYE">Total PAYE (Tax + NIS + Health)</span>:</strong></div> <span id="resTotalPAYESelectedFreq"></span></div>
                         </div>
-
-                    <div id="customAnnuityInputSection" class="mt-10 pt-8 border-t border-[var(--border-color)]">
-                        <h3 class="text-lg md:text-xl font-semibold text-[var(--success-color)] mb-4">Want to Try Your Own Annuity Idea?</h3>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-5 gap-y-4 items-end">
-                            <div class="sm:col-span-2 md:col-span-1">
-                                <label for="customAnnuityAmount" class="block text-xs font-medium text-[var(--text-secondary)] mb-1">How much to save</label>
-                                <input type="number" id="customAnnuityAmount" placeholder="TTD" class="mt-1 block w-full text-sm">
-                            </div>
-                            <div>
-                                <label for="customAnnuityFrequency" class="block text-xs font-medium text-[var(--text-secondary)] mb-1">How often</label>
-                                <select id="customAnnuityFrequency" class="mt-1 block w-full text-sm">
-                                    <option value="monthly" selected>Monthly</option>
-                                    <option value="annual">Annual</option>
-                                </select>
-                            </div>
-                            <button id="getCustomQuoteBtn" class="w-full secondary-action-button button-base text-sm py-2.5 px-3">
-                                Get My Free Quote (via WhatsApp)
+                         <div class="mt-6 p-5 take-home-pay-card text-center">
+                            <p class="text-lg font-semibold label" id="labelAnnualTakeHomePay">Your Estimated Annual Take-Home Pay</p>
+                            <p class="text-3xl md:text-4xl font-bold amount mt-1" id="resAnnualTakeHomePay"></p>
+                            <p class="text-md font-medium label mt-3" id="labelTakeHomePaySelectedFreq">Your Take-Home Pay (per pay period)</p>
+                            <p class="text-xl md:text-2xl font-bold amount" id="resTakeHomePaySelectedFreq"></p>
+                        </div>
+                         <div class="mt-6 text-center hidden">
+                             <button id="downloadPdfBtn" class="w-full md:w-auto main-calc-button button-base text-sm py-2.5 px-6">
+                                Download Summary (PDF)
                             </button>
                         </div>
-                        <p id="customQuoteStatusMessage" class="text-xs mt-3 text-center min-h-[1em]" aria-live="polite" aria-atomic="true"></p> 
-                    </div>
+                    </section>
                     
-                    <div id="generalAnnuityPromptWrapper" class="mt-8 pt-8 border-t border-[var(--border-color)]">
-                         <p id="dynamicQuoteDisplay"></p>
-                         <div id="generalAnnuityPromptContent" class="text-[var(--text-secondary)] leading-relaxed text-sm"></div>
-                    </div>
-                     <p class="mt-8 text-xs text-[var(--text-muted)] text-center">
-                        Disclaimer: Estimates are for illustrative purposes. Not financial advice. Tax laws and rates subject to change. Consult a qualified financial advisor & BIR. Annuity terms & conditions apply.
-                    </p>
+                    <section id="overallPayeChartSection" class="bento-box bento-box-overall-chart space-y-6 lg:col-span-1">
+                        <h2 class="bento-section-title text-center text-xl md:text-2xl">Annual Pay Distribution</h2>
+                        <p class="text-center text-sm text-[var(--text-muted)] -mt-4 mb-2">Click or hover on a slice to see its value.</p>
+                        <div class="chart-container" style="height: 400px;">
+                            <canvas id="annualPayePieChart" data-chart-type="annual-pie"></canvas>
+                        </div>
+                         <div class="mt-6 text-center">
+                            <button class="w-full md:w-auto secondary-action-button button-base text-sm py-2.5 px-6 pulse-animation js-scroll-to-annuity">
+                                Next: See Your Annuity Growth & Tax Savings ↓
+                            </button>
+                        </div>
+                    </section>
                 </div>
-            </section>
-             
+            </div>
 
+            <!-- Full-width sections will be placed here by JS -->
+            <div id="full-width-sections-wrapper" class="space-y-8">
+                 <section class="bento-box bento-box-annuity-insights hidden" id="annuityInsightsSection">
+                     <h2 class="bento-section-title text-center text-xl md:text-2xl mb-6"><span class="bento-step-indicator">3</span>Smart Annuity Plans & How They Grow</h2>
+                    <div class="bg-[var(--bg-secondary)] py-5 px-0 sm:px-5 md:p-6 rounded-lg">
+                        <div id="existingAnnuityInsight" class="mb-7 pb-7 border-b border-[var(--border-color)]"></div>
+                        
+                        <h3 id="exploreFurtherHeading" class="text-lg md:text-xl font-semibold text-[var(--success-color)] mt-5 mb-3">Your Custom Annuity Growth Plans:</h3>
+                        <p id="exploreFurtherIntro" class="text-[var(--text-secondary)] text-sm mb-6">See how saving a bit more can boost your retirement fund. We'll show you the details as you scroll.</p>
+                        
+                        <div id="annuityRecommendationsContainer" class="space-y-6">
+                        </div>
 
-            <!-- CTA Section Updated with Kyron Marchan's Information -->
-            <section id="main-cta" class="bento-box bento-box-cta cta-bento-box">
-                <div class="container mx-auto px-4 py-6 text-center">
-                    <h2 class="text-xl md:text-2xl font-bold mb-4">Ready for a Secure Retirement?</h2>
-                    <p class="text-sm md:text-base mb-3 max-w-lg mx-auto">
-                        A planned future is a peaceful one! Get a FREE chat with Kyron Marchan, our T&T annuity expert, to create a plan just for you.
-                    </p>
-                    <p class="text-xs italic mb-5 max-w-xl mx-auto">
-                        Kyron Marchan: Licensed Insurance Agent (Tatil Life & TATIL) with 13 years in retirement planning.
-                    </p>
-                    <div class="space-y-3 md:space-y-0 md:flex md:justify-center md:space-x-4">
-                        <a href="mailto:kyron.marchan@tatil.co.tt?subject=Annuity Inquiry from PAYE Calculator App" class="final-cta-button button-base py-2.5 px-6 text-base inline-block w-full md:w-auto"> <!-- Updated Subject Line -->
-                            Email Kyron for Free Advice
-                        </a>
-                        <a href="https://wa.me/18683278273?text=Hello%20Kyron,%20I'd%20like%20to%20discuss%20my%20financial%20plan." target="_blank" class="final-cta-button button-base bg-green-500 hover:bg-green-600 py-2.5 px-6 text-base inline-block w-full md:w-auto" style="background-color: #25D366; border-color: #25D366;">
-                            Chat on WhatsApp
-                        </a>
+                        <div id="customAnnuityInputSection" class="mt-10 pt-8 border-t border-[var(--border-color)]">
+                            <h3 class="text-lg md:text-xl font-semibold text-[var(--success-color)] mb-4">Want to Try Your Own Annuity Idea?</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-5 gap-y-4 items-end">
+                                <div class="sm:col-span-2 md:col-span-1">
+                                    <label for="customAnnuityAmount" class="block text-xs font-medium text-[var(--text-secondary)] mb-1">How much to save</label>
+                                    <input type="number" id="customAnnuityAmount" placeholder="TTD" class="mt-1 block w-full text-sm">
+                                </div>
+                                <div>
+                                    <label for="customAnnuityFrequency" class="block text-xs font-medium text-[var(--text-secondary)] mb-1">How often</label>
+                                    <select id="customAnnuityFrequency" class="mt-1 block w-full text-sm">
+                                        <option value="monthly" selected>Monthly</option>
+                                        <option value="annual">Annual</option>
+                                    </select>
+                                </div>
+                                <button id="getCustomQuoteBtn" class="w-full secondary-action-button button-base text-sm py-2.5 px-3 glow-nudge-animation">
+                                    Get My Free Quote (via WhatsApp)
+                                </button>
+                            </div>
+                            <p id="customQuoteStatusMessage" class="text-xs mt-3 text-center min-h-[1em]"></p> 
+                        </div>
+                        
+                        <div id="generalAnnuityPromptWrapper" class="mt-8 pt-8 border-t border-[var(--border-color)]">
+                             <p id="dynamicQuoteDisplay"></p>
+                             <div id="generalAnnuityPromptContent" class="text-[var(--text-secondary)] leading-relaxed text-sm"></div>
+                        </div>
                     </div>
-                    <div class="mt-6 text-xs">
-                        <p>Or Call Kyron Now:</p>
-                        <p class="text-lg font-bold mt-0.5"><a href="tel:+18683278273" class="hover:text-[var(--secondary-accent)] transition-colors">+1 (868) 327-8273</a></p>
-                        <p class="mt-1">(Kyron Marchan | Local T&T Expert | BIR Approved Plans)</p>
+                </section>
+                <section class="bento-box bento-box-cta cta-bento-box fade-in-on-scroll hidden" id="main-cta">
+                    <div class="flex flex-col md:flex-row items-center text-center md:text-left">
+                        <img src="https://raw.githubusercontent.com/Kelsean868/paye-annuity-calculator-tt/refs/heads/main/contact%20photo.jpeg" class="w-24 h-24 rounded-full mb-4 md:mb-0 md:mr-6 flex-shrink-0 object-cover" alt="Kyron Marchan" onerror="this.onerror=null;this.src='https://placehold.co/100x100/e2e8f0/3d4d58?text=KM';">
+                        <div class="container mx-auto px-4 py-6">
+                            <h2 class="text-2xl md:text-3xl font-bold mb-2">Is Your Money Working Hard Enough for Retirement?</h2>
+                            <p class="text-sm md:text-base mb-4 max-w-xl">
+                                Your results are a great start. In a free, no-obligation chat, I can help you understand what these numbers <em>really</em> mean for your retirement goals and build a personalized plan to get you there.
+                            </p>
+                            <p class="text-xs italic mb-5 max-w-xl">
+                                Kyron Marchan: Licensed Insurance Agent (Tatil Life & TATIL) with 13 years in retirement planning.
+                            </p>
+                            <div class="space-y-3 md:space-y-0 md:flex md:items-center md:space-x-4">
+                                <a href="mailto:kyron.marchan@tatil.co.tt?subject=Annuity Inquiry from Sleek Bento Calculator" class="final-cta-button button-base py-2.5 px-6 text-base inline-block w-full md:w-auto pulse-animation">
+                                    Email Kyron for Free Advice
+                                </a>
+                                <a href="https://wa.me/18683278273?text=Hello%20Kyron,%20I'd%20like%20to%20discuss%20my%20financial%20plan." target="_blank" class="final-cta-button button-base bg-green-500 hover:bg-green-600 py-2.5 px-6 text-base inline-block w-full md:w-auto pulse-animation" style="background-color: #25D366; border-color: #25D366;">
+                                    Chat on WhatsApp
+                                </a>
+                                 <div class="mt-4 md:mt-0 md:ml-4 text-xs">
+                                    <p>Or Call Kyron Now:</p>
+                                    <p class="text-lg font-bold"><a href="tel:+18683278273" class="hover:text-[var(--secondary-accent)] transition-colors">+1 (868) 327-8273</a></p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </section>
-            <!-- Legal Information Section -->
-            <section id="legalSection" class="bento-box bento-box-annuity-insights hidden">
-                 <h2 class="bento-section-title text-center text-xl md:text-2xl mb-6">Legal Information</h2>
-                 <div class="space-y-4">
-                     <div>
-                         <h3 class="font-semibold text-lg cursor-pointer flex justify-between items-center" data-toggle="disclaimerContent">
-                             <span>Disclaimer</span>
-                             <svg class="w-4 h-4 transition-transform transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
-                         </h3>
-                         <div id="disclaimerContent" class="hidden mt-2 text-sm text-[var(--text-muted)] space-y-2">
-                             <p>This calculator is provided for informational and illustrative purposes only. The results are estimates based on the data you provide and current Trinidad and Tobago tax laws (as of June 2025), which are subject to change. They are not intended to be, and should not be construed as, financial, tax, or legal advice.</p>
-                             <p>We do not guarantee the accuracy or applicability of these estimates to your individual circumstances. All financial decisions should be made only after consulting with a qualified and licensed financial advisor, accountant, or legal professional who can assess your specific situation. Reliance on any information provided by this calculator is solely at your own risk.</p>
-                         </div>
+                </section>
+
+                <section class="bento-box bento-box-annuity-insights fade-in-on-scroll hidden" id="legalSection">
+                     <h2 class="bento-section-title text-center text-xl md:text-2xl mb-2 cursor-pointer flex justify-center items-center" data-toggle="legalContentWrapper">
+                         <span>Legal Information</span>
+                         <svg class="w-5 h-5 ml-2 transition-transform transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+                     </h2>
+                     <div id="legalContentWrapper" class="hidden mt-4 text-sm text-[var(--text-muted)] space-y-4">
+                         <p>This calculator is provided for informational and illustrative purposes only. The results are estimates based on the data you provide and current Trinidad and Tobago tax laws, which are subject to change. They are not intended to be, and should not be construed as, financial, tax, or legal advice.</p>
+                         <p>We do not guarantee the accuracy or applicability of these estimates to your individual circumstances. All financial decisions should be made only after consulting with a qualified and licensed financial advisor, accountant, or legal professional who can assess your specific situation. Reliance on any information provided by this calculator is solely at your own risk.</p>
                      </div>
-                      <div class="pt-4 border-t border-[var(--border-color)]">
-                         <h3 class="font-semibold text-lg cursor-pointer flex justify-between items-center" data-toggle="privacyContent">
-                             <span>Privacy Policy</span>
-                              <svg class="w-4 h-4 transition-transform transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
-                         </h3>
-                         <div id="privacyContent" class="hidden mt-2 text-sm text-[var(--text-muted)] space-y-2">
-                             <p>This site is committed to protecting your privacy. We do not collect, store, or share any personal financial data you enter into the calculator. All calculations are performed within your browser and are not transmitted to our servers.</p>
-                             <p>We use third-party vendors, including Google, to serve ads when you visit our website. These companies may use information about your visits to this and other websites in order to provide advertisements about goods and services of interest to you.</p>
-                             <ul class="list-disc list-inside ml-4">
-                                 <li>Google's use of advertising cookies enables it and its partners to serve ads to our users based on their visit to our site and/or other sites on the Internet.</li>
-                                 <li>Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" class="text-[var(--primary-accent)] hover:underline">Ads Settings</a>.</li>
-                                 <li>Alternatively, you can opt out of a third-party vendor's use of cookies for personalized advertising by visiting <a href="http://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" class="text-[var(--primary-accent)] hover:underline">www.aboutads.info/choices</a>.</li>
-                             </ul>
-                             <p>We also use Google Analytics to understand our website traffic. This service collects data about visitor behavior in an anonymous form. You can learn more about how Google uses data and how to opt-out by visiting their site.</p>
-                             <p>By using this website, you consent to our privacy policy. This policy was last updated on June 5, 2025.</p>
-                         </div>
-                     </div>
-                 </div>
-            </section>
-        </div> 
+                </section>
+            </div>
+        </div>
         
         <footer class="text-center mt-12 text-xs text-[var(--text-muted)]">
             <p>&copy; <span id="currentYear"></span> Sleek Bento Annuity Planner TT. Plan with Precision, Retire with Confidence.</p>
-            <!-- Back to Top Button -->
-            <button id="backToTopButton" class="mobile-floating-button fixed bottom-4 right-4 bg-[var(--primary-accent)] hover:bg-[var(--primary-accent-darker)] text-white p-3 rounded-full shadow-lg z-50 flex items-center justify-center opacity-0 invisible" title="Back to Top">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 19V5"></path>
-                    <polyline points="5 12 12 5 19 12"></polyline>
-                </svg>
-            </button>
         </footer>
     </div>
-
-    <!-- Removed Mobile & Desktop Reset Buttons -->
 
     <div id="alertModal" class="modal">
       <div class="modal-content">
@@ -757,7 +779,7 @@
                 <label for="whatsappNumber" class="block text-xs font-medium text-[var(--text-secondary)] mb-1">WhatsApp Number</label>
                 <input type="tel" id="whatsappNumber" name="whatsappNumber" required placeholder="e.g., +18681234567" class="mt-1 block w-full">
             </div>
-            <div id="customQuoteFormError" class="text-[var(--paye-emphasis-color)] text-xs text-left hidden min-h-[1em]" aria-live="polite" aria-atomic="true"></div>
+            <div id="customQuoteFormError" class="text-[var(--paye-emphasis-color)] text-xs text-left hidden min-h-[1em]"></p>
             <button type="submit" class="w-full secondary-action-button button-base text-sm py-3 px-4">
                 Send My Quote Request
             </button>
@@ -769,28 +791,16 @@
         // --- GLOBAL FLAGS & CONSTANTS ---
         window.initialCalculationPerformed = false; 
         let chartInstances = {}; 
-        const TAX_CONSTANTS = {
-            PERSONAL_ALLOWANCE: 90000,
-            MAX_DEDUCTIBLE_NIS_ANNUITY_COMBINED: 60000,
-            BRACKET_1_LIMIT: 1000000,
-            RATE_1: 0.25,
-            RATE_2: 0.30
-        };
-        const TIME_CONSTANTS = {
-            WEEKS_IN_YEAR: 52,
-            FORTNIGHTS_IN_YEAR: 26,
-            MONTHS_IN_YEAR: 12,
-            FOUR_WEEKS: 4 // Approx. weeks in a month
-        };
-        const NIS_CONSTANTS = {
-            TABLE: [ { minMonthly: 0, maxMonthly: 866.99, weeklyEmpContrib: 0 }, { minMonthly: 867.00, maxMonthly: 1472.99, weeklyEmpContrib: 11.90 }, { minMonthly: 1473.00, maxMonthly: 1949.99, weeklyEmpContrib: 17.40 }, { minMonthly: 1950.00, maxMonthly: 2642.99, weeklyEmpContrib: 23.30 }, { minMonthly: 2643.00, maxMonthly: 3292.99, weeklyEmpContrib: 30.10 }, { minMonthly: 3293.00, maxMonthly: 4029.99, weeklyEmpContrib: 37.20 }, { minMonthly: 4030.00, maxMonthly: 4852.99, weeklyEmpContrib: 45.10 }, { minMonthly: 4853.00, maxMonthly: 5632.99, weeklyEmpContrib: 53.20 }, { minMonthly: 5633.00, maxMonthly: 6456.99, weeklyEmpContrib: 61.40 }, { minMonthly: 6457.00, maxMonthly: 7409.99, weeklyEmpContrib: 70.40 }, { minMonthly: 7410.00, maxMonthly: 8276.99, weeklyEmpContrib: 79.60 }, { minMonthly: 8277.00, maxMonthly: 9272.99, weeklyEmpContrib: 89.10 }, { minMonthly: 9273.00, maxMonthly: 10312.99, weeklyEmpContrib: 99.40 }, { minMonthly: 10313.00, maxMonthly: 11396.99, weeklyEmpContrib: 110.20 }, { minMonthly: 11397.00, maxMonthly: 12652.99, weeklyEmpContrib: 122.10 }, { minMonthly: 12653.00, maxMonthly: 13599.99, weeklyEmpContrib: 133.30 }, { minMonthly: 13600.00, maxMonthly: Infinity, weeklyEmpContrib: 138.10 } ],
-            EMPLOYEE_CONTRIB_PERCENTAGE: 0.70
-        };
-        const HEALTH_SURCHARGE_CONSTANTS = {
-            MONTHLY_THRESHOLD: 469.99,
-            RATE_HIGH_WEEKLY: 8.25,
-            RATE_LOW_WEEKLY: 4.80
-        };
+        let scrollTimeout;
+        const PERSONAL_ALLOWANCE = 90000; 
+        const MAX_DEDUCTIBLE_NIS_ANNUITY_COMBINED = 60000; 
+        const TAX_BRACKET_1_LIMIT = 1000000; 
+        const TAX_RATE_1 = 0.25; 
+        const TAX_RATE_2 = 0.30; 
+        const WEEKS_IN_YEAR = 52;
+        const FORTNIGHTS_IN_YEAR = 26; 
+        const MONTHS_IN_YEAR = 12;
+        const FOUR_WEEKS = 4; 
         const CURRENCY_SYMBOL = "TTD "; 
         const RETIREMENT_AGE = 65;
         const ASSUMED_ANNUITY_INTEREST_RATE = 0.025; 
@@ -814,19 +824,22 @@
         const themeToggle = document.getElementById('themeToggleCheckbox');
         const body = document.body; 
         const themeToggleLabel = document.getElementById('themeToggleLabel');
-        const bentoGrid = document.getElementById('bentoGrid');
         const resultsSection = document.getElementById('resultsSection');
-        const payAllocationChartSection = document.getElementById('payAllocationChartSection'); 
         const annuityInsightsSection = document.getElementById('annuityInsightsSection');
         const legalSection = document.getElementById('legalSection');
-        const financialDetailsBox = document.querySelector('.bento-box-financial-details');
-        const payeResultsBox = document.querySelector('.bento-box-paye-results');
-        const annuityInsightsBox = document.querySelector('.bento-box-annuity-insights');
-        const ctaBox = document.querySelector('.bento-box-cta');
         const calculateButton = document.getElementById('calculateButton');
         const ageInput = document.getElementById('age');
         const incomeFrequencySelect = document.getElementById('incomeFrequency');
         const grossIncomeInput = document.getElementById('grossIncome');
+        const stickyNav = document.getElementById('stickyNav');
+        const pageHeader = document.getElementById('pageHeader');
+        const scrollNudgeEl = document.getElementById('scrollNudge');
+        const mainCtaEl = document.getElementById('main-cta');
+        const overallPayeChartSection = document.getElementById('overallPayeChartSection');
+        const payBreakdownTitleEl = document.getElementById('payBreakdownTitle');
+        const mainContentGrid = document.getElementById('main-content-grid');
+        const resultsWrapper = document.getElementById('results-wrapper');
+        const fullWidthSectionsWrapper = document.getElementById('full-width-sections-wrapper');
         
         const hasAnnuityProductSelect = document.getElementById('hasAnnuityProduct');
         const companyPensionContainer = document.getElementById('companyPensionContainer');
@@ -848,10 +861,7 @@
         const customQuoteFormErrorEl = document.getElementById('customQuoteFormError');
         const userNameInput = document.getElementById('userName');
         const whatsappNumberInput = document.getElementById('whatsappNumber');
-        const backToTopButton = document.getElementById('backToTopButton');
 
-
-        // --- UTILITY FUNCTIONS (Defined early) ---
         function displayRandomQuote() {
             const quoteDisplayEl = document.getElementById('dynamicQuoteDisplay');
             if (quoteDisplayEl) {
@@ -867,16 +877,14 @@
             if (isNaN(value)) return CURRENCY_SYMBOL + "0" + (decimalPlaces > 0 ? "." + "0".repeat(decimalPlaces) : "");
             return CURRENCY_SYMBOL + Number(value).toLocaleString(undefined, { minimumFractionDigits: decimalPlaces, maximumFractionDigits: decimalPlaces });
         }
-        
         function getEmployeeNISWeeklyContribution(currentGrossAnnualIncome) {
-            const grossMonthlyIncome = currentGrossAnnualIncome / TIME_CONSTANTS.MONTHS_IN_YEAR;
-            for (const tier of NIS_CONSTANTS.TABLE) { if (grossMonthlyIncome >= tier.minMonthly && grossMonthlyIncome <= tier.maxMonthly) return tier.weeklyEmpContrib; } return 0;
+            const grossMonthlyIncome = currentGrossAnnualIncome / MONTHS_IN_YEAR;
+            for (const tier of [ { minMonthly: 0, maxMonthly: 866.99, weeklyEmpContrib: 0 }, { minMonthly: 867.00, maxMonthly: 1472.99, weeklyEmpContrib: 11.90 }, { minMonthly: 1473.00, maxMonthly: 1949.99, weeklyEmpContrib: 17.40 }, { minMonthly: 1950.00, maxMonthly: 2642.99, weeklyEmpContrib: 23.30 }, { minMonthly: 2643.00, maxMonthly: 3292.99, weeklyEmpContrib: 30.10 }, { minMonthly: 3293.00, maxMonthly: 4029.99, weeklyEmpContrib: 37.20 }, { minMonthly: 4030.00, maxMonthly: 4852.99, weeklyEmpContrib: 45.10 }, { minMonthly: 4853.00, maxMonthly: 5632.99, weeklyEmpContrib: 53.20 }, { minMonthly: 5633.00, maxMonthly: 6456.99, weeklyEmpContrib: 61.40 }, { minMonthly: 6457.00, maxMonthly: 7409.99, weeklyEmpContrib: 70.40 }, { minMonthly: 7410.00, maxMonthly: 8276.99, weeklyEmpContrib: 79.60 }, { minMonthly: 8277.00, maxMonthly: 9272.99, weeklyEmpContrib: 89.10 }, { minMonthly: 9273.00, maxMonthly: 10312.99, weeklyEmpContrib: 99.40 }, { minMonthly: 10313.00, maxMonthly: 11396.99, weeklyEmpContrib: 110.20 }, { minMonthly: 11397.00, maxMonthly: 12652.99, weeklyEmpContrib: 122.10 }, { minMonthly: 12653.00, maxMonthly: 13599.99, weeklyEmpContrib: 133.30 }, { minMonthly: 13600.00, maxMonthly: Infinity, weeklyEmpContrib: 138.10 } ]) { if (grossMonthlyIncome >= tier.minMonthly && grossMonthlyIncome <= tier.maxMonthly) return tier.weeklyEmpContrib; } return 0;
         }
-         
         function getHealthSurchargeWeeklyRate(currentGrossAnnualIncome) {
-            const monthlyIncome = currentGrossAnnualIncome / TIME_CONSTANTS.MONTHS_IN_YEAR;
+            const monthlyIncome = currentGrossAnnualIncome / MONTHS_IN_YEAR;
             if (monthlyIncome <= 0) return 0;
-            return monthlyIncome > HEALTH_SURCHARGE_CONSTANTS.MONTHLY_THRESHOLD ? HEALTH_SURCHARGE_CONSTANTS.RATE_HIGH_WEEKLY : HEALTH_SURCHARGE_CONSTANTS.RATE_LOW_WEEKLY;
+            return monthlyIncome > 469.99 ? 8.25 : 4.80;
         }
         function showAlert(message) {
             const alertModal = document.getElementById('alertModal'); const alertModalMessage = document.getElementById('alertModalMessage');
@@ -884,19 +892,13 @@
         }
         function closeModal(modalId) { const modalToClose = document.getElementById(modalId); if (modalToClose) modalToClose.style.display = "none"; }
         function getFrequencyDivisor(frequency) {
-            switch (frequency) { 
-                case 'annual': return 1; 
-                case 'monthly': return TIME_CONSTANTS.MONTHS_IN_YEAR; 
-                case 'fortnightly': return TIME_CONSTANTS.FORTNIGHTS_IN_YEAR; 
-                case 'weekly': return TIME_CONSTANTS.WEEKS_IN_YEAR; 
-                default: return 1; 
-            }
+            switch (frequency) { case 'annual': return 1; case 'monthly': return MONTHS_IN_YEAR; case 'fortnightly': return FORTNIGHTS_IN_YEAR; case 'weekly': return WEEKS_IN_YEAR; default: return 1; }
         }
         function capitalizeFirstLetter(string) { if (!string) return ''; return string.charAt(0).toUpperCase() + string.slice(1); }
         function calculateIncomeTax(currentTaxableIncome) {
             let tax = 0;
-            if (currentTaxableIncome <= TAX_CONSTANTS.BRACKET_1_LIMIT) tax = currentTaxableIncome * TAX_CONSTANTS.RATE_1;
-            else tax = (TAX_CONSTANTS.BRACKET_1_LIMIT * TAX_CONSTANTS.RATE_1) + ((currentTaxableIncome - TAX_CONSTANTS.BRACKET_1_LIMIT) * TAX_CONSTANTS.RATE_2);
+            if (currentTaxableIncome <= TAX_BRACKET_1_LIMIT) tax = currentTaxableIncome * TAX_RATE_1;
+            else tax = (TAX_BRACKET_1_LIMIT * TAX_RATE_1) + ((currentTaxableIncome - TAX_BRACKET_1_LIMIT) * TAX_RATE_2);
             return Math.max(0, tax);
         }
         function calculateFutureValueAnnuity(principalAnnual, rate, years) {
@@ -918,14 +920,7 @@
             const darkChartTickLabelColor = '#e5e7eb'; 
             const darkChartTitleColor = '#f3f4f6';   
             return {
-                pie: { 
-                    incomeTax: style.getPropertyValue('--paye-emphasis-color').trim(), 
-                    payeEmphasis: style.getPropertyValue('--paye-emphasis-color').trim(), 
-                    healthSurcharge: style.getPropertyValue('--primary-accent').trim(), 
-                    nis: style.getPropertyValue('--secondary-accent').trim(), 
-                    takeHome: style.getPropertyValue('--success-color').trim(), 
-                    borderColor: style.getPropertyValue('--border-color').trim() 
-                },
+                pie: { incomeTax: style.getPropertyValue('--paye-emphasis-color').trim(), nisHealth: style.getPropertyValue('--secondary-accent').trim(), takeHome: style.getPropertyValue('--success-color').trim(), paye: style.getPropertyValue('--paye-emphasis-color').trim(), borderColor: style.getPropertyValue('--border-color').trim() },
                 line: { 
                     borderColor: style.getPropertyValue('--primary-accent').trim(), 
                     backgroundColor: style.getPropertyValue('--primary-accent').trim() + '33', 
@@ -941,79 +936,118 @@
                 textSecondaryColor: isDark ? darkChartTickLabelColor : style.getPropertyValue('--text-secondary').trim() 
             };
         }
-        
-        Chart.register(ChartDataLabels); 
-
-        function renderPieChart(canvasId, chartTitle, labels, dataValues, showLegend = true) { 
+        function renderPieChart(canvasId, chartTitle, labels, dataValues, showLegend = true, backgroundColors, usePointers = false) { 
             if (chartInstances[canvasId] && typeof chartInstances[canvasId].destroy === 'function') chartInstances[canvasId].destroy();
             const ctx = document.getElementById(canvasId); if (!ctx) return;
             const colors = getChartColors();
             const isMobile = window.innerWidth < 768;
-            
-            const chartOptions = { 
-                responsive: true, 
-                maintainAspectRatio: false, 
-                plugins: { 
-                    title: { display: true, text: chartTitle, padding: { top: 12, bottom: 12}, font: { size: isMobile ? 13 : 16, family: colors.fontFamily, weight: '700' }, color: colors.textPrimaryColor }, 
-                    tooltip: { bodyFont: { family: colors.fontFamily, size: 11 }, titleFont: { family: colors.fontFamily, size: 12, weight: '600' }, callbacks: { label: (context) => `${context.label || ''}: ${formatCurrency(context.parsed, 0)}` } }, 
-                    legend: { display: showLegend, position: isMobile ? 'top' : 'bottom', labels: { font: { size: isMobile ? 10 : 12, family: colors.fontFamily }, color: colors.textSecondaryColor, boxWidth: isMobile ? 10 : 18, padding: isMobile ? 8 : 15 } },
-                    datalabels: {
-                        display: function(context) {
-                            return labels.length === 2 && (labels[context.dataIndex] === 'Total PAYE' || labels[context.dataIndex] === 'Take-home Pay'); 
-                        },
-                        formatter: (value, ctx) => {
-                            let sum = 0;
-                            let dataArr = ctx.chart.data.datasets[0].data;
-                            dataArr.map(data => {
-                                sum += data;
-                            });
-                            if (sum === 0) return '0%';
-                            let percentage = (value*100 / sum).toFixed(0)+"%";
-                            return percentage;
-                        },
-                        color: '#fff', 
-                        font: {
-                            weight: 'bold',
-                            size: (isMobile && labels.length === 2) ? 9 : (labels.length === 2 ? 11 : (isMobile ? 10 : 12) )
-                        },
-                        anchor: 'center',
-                        align: 'center'
-                    }
-                }, 
-                layout: { padding: isMobile ? {left: 2, right: 2, top: 5, bottom: 5} : {left:10, right:10, top:10, bottom:10} }, 
-                animation: { animateScale: true, animateRotate: true, duration: 700 } 
+
+            const dataLabelsConfigOnSlice = {
+                formatter: (value, ctx) => {
+                    let sum = ctx.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+                    let percentage = (value * 100 / sum).toFixed(1) + "%";
+                    return percentage;
+                },
+                color: '#fff',
+                font: { weight: 'bold', size: isMobile ? 12 : 14, },
+                textStrokeColor: 'rgba(0,0,0,0.4)',
+                textStrokeWidth: 2
             };
 
-            let backgroundColorsForChart = [];
-            if (labels.length === 2 && labels[0] === 'Total PAYE' && labels[1] === 'Take-home Pay') { 
-                 backgroundColorsForChart = [colors.pie.payeEmphasis, colors.pie.takeHome];
-            } else if (labels.length === 4) { 
-                backgroundColorsForChart = [colors.pie.healthSurcharge, colors.pie.nis, colors.pie.incomeTax, colors.pie.takeHome];
-            }
-
+            const dataLabelsConfigWithPointers = {
+                 display: false // We will use the tooltip instead for clarity
+            };
 
             chartInstances[canvasId] = new Chart(ctx.getContext('2d'), {
-                type: 'pie', data: { 
+                type: 'pie', 
+                data: { 
                     labels: labels, 
                     datasets: [{ 
                         label: 'Allocation', 
                         data: dataValues, 
-                        backgroundColor: backgroundColorsForChart, 
+                        backgroundColor: backgroundColors || [colors.pie.paye, colors.pie.takeHome], 
                         borderColor: Array(dataValues.length).fill(colors.pie.borderColor), 
-                        borderWidth: 1.5 
+                        borderWidth: 2
                     }] 
                 },
-                options: chartOptions
+                options: { 
+                    responsive: true, 
+                    maintainAspectRatio: false, 
+                    plugins: { 
+                        title: { 
+                            display: false, // Hide title as per request
+                        }, 
+                        tooltip: { 
+                            bodyFont: { family: colors.fontFamily, size: 11 }, 
+                            titleFont: { family: colors.fontFamily, size: 12, weight: '600' }, 
+                            callbacks: { label: (context) => {
+                                const label = context.label || '';
+                                const value = context.parsed;
+                                const sum = context.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+                                const percentage = (value * 100 / sum).toFixed(1) + "%";
+                                return `${label}: ${formatCurrency(value, 0)} (${percentage})`;
+                            }}
+                        }, 
+                        legend: { 
+                            display: showLegend, 
+                            position: 'bottom', 
+                            labels: { 
+                                font: { size: isMobile ? 10 : 12, family: colors.fontFamily }, 
+                                color: colors.textSecondaryColor, 
+                                boxWidth: isMobile ? 10 : 18, 
+                                padding: isMobile ? 8 : 15 
+                            } 
+                        },
+                        datalabels: usePointers ? dataLabelsConfigWithPointers : dataLabelsConfigOnSlice
+                    }, 
+                    layout: { padding: {top: 10, bottom: 10, left:10, right:10} },
+                    animation: { animateScale: true, animateRotate: true, duration: 700 } 
+                },
+                plugins: [ChartDataLabels]
             });
         }
         function renderLineChart(canvasId, chartTitleOverall, datasetConfigsArray) {
-            if (chartInstances[canvasId]) chartInstances[canvasId].destroy();
-            
+            if (chartInstances[canvasId]) {
+                chartInstances[canvasId].destroy();
+            }
             const ctx = document.getElementById(canvasId);
             if (!ctx) return;
 
             const isMobile = window.innerWidth < 768;
             const colors = getChartColors();
+            
+            const totalDuration = 1200;
+            const delayBetweenPoints = totalDuration / (datasetConfigsArray[0].data.length || 1);
+            const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
+
+            const animation = {
+                x: {
+                    type: 'number',
+                    easing: 'linear',
+                    duration: delayBetweenPoints,
+                    from: NaN, // the point is initially skipped
+                    delay(ctx) {
+                        if (ctx.type !== 'data' || ctx.xStarted) {
+                            return 0;
+                        }
+                        ctx.xStarted = true;
+                        return ctx.index * delayBetweenPoints;
+                    }
+                },
+                y: {
+                    type: 'number',
+                    easing: 'linear',
+                    duration: delayBetweenPoints,
+                    from: previousY,
+                    delay(ctx) {
+                        if (ctx.type !== 'data' || ctx.yStarted) {
+                            return 0;
+                        }
+                        ctx.yStarted = true;
+                        return ctx.index * delayBetweenPoints;
+                    }
+                }
+            };
             
             const chartOptions = {
                 responsive: true, 
@@ -1022,6 +1056,9 @@
                      padding: isMobile ? { left: 2, right: 2, top: 5, bottom: 5 } : { top: 10, right: 20, bottom: 10, left: 20 } 
                 },
                 plugins: {
+                    datalabels: {
+                        display: false,
+                    },
                     title: { display: true, text: chartTitleOverall, padding: {top: 12, bottom: 18}, font: { size: isMobile? 13 : 16, family: colors.fontFamily, weight: '700' }, color: colors.textPrimaryColor }, 
                     tooltip: { bodyFont: { family: colors.fontFamily, size: 11 }, titleFont: { family: colors.fontFamily, size: 12, weight: '600' }, callbacks: { label: (context) => `${context.dataset.label}: ${formatCurrency(context.raw, 0)}` } },
                     legend: { 
@@ -1032,15 +1069,12 @@
                             boxWidth: isMobile ? 10 : 18, 
                             padding: isMobile ? 8 : 15 
                         } 
-                    },
-                    datalabels: { 
-                        display: false
                     } 
                 },
                 scales: { 
                     y: { 
                         beginAtZero: true, 
-                        grace: isMobile ? '2%' : '5%', 
+                        grace: '5%', 
                         ticks: { callback: (value) => formatCurrency(value, 0), font: {size: isMobile ? 9 : 11, family: colors.fontFamily}, color: colors.line.ticksColor }, 
                         grid: { color: colors.line.gridColor } 
                     },
@@ -1055,19 +1089,13 @@
                         grid: { display: false } 
                     }
                 },
-                animation: { duration: 900, easing: 'easeOutCubic' } 
+                animation: animation
             };
 
             const chartDatasets = datasetConfigsArray.map(config => ({ 
                 label: config.label, data: config.data, borderColor: config.borderColor, 
-                backgroundColor: config.backgroundColor, fill: true, tension: config.tension || 0.35, 
-                pointBackgroundColor: config.pointBackgroundColor || config.borderColor, 
-                pointBorderColor: config.pointBorderColor || colors.line.pointBorderColor, 
-                pointHoverBackgroundColor: config.pointHoverBackgroundColor || colors.line.pointBorderColor, 
-                pointHoverBorderColor: config.pointHoverBorderColor || config.borderColor, 
-                borderWidth: config.borderWidth || 2.5, 
-                pointRadius: config.pointRadius || 4, 
-                pointHoverRadius: config.pointHoverRadius || 6 
+                backgroundColor: config.backgroundColor, fill: true, tension: 0.4,
+                borderWidth: 2.5
             }));
 
             chartInstances[canvasId] = new Chart(ctx, {
@@ -1076,333 +1104,184 @@
                 options: chartOptions
             });
         }
+        
+        function renderCanvasChart(canvas) {
+            if (!canvas) return;
+            if (chartInstances[canvas.id]) {
+                chartInstances[canvas.id].destroy();
+            }
 
-        // --- BENTO GRID RESIZE LOGIC ---
-        function adjustBentoLayout() {
-            if (!bentoGrid || !resultsSection || !annuityInsightsSection || !financialDetailsBox || !payeResultsBox || !payAllocationChartSection ||!annuityInsightsBox || !ctaBox) {
+            const chartType = canvas.dataset.chartType;
+            if (!chartType || !canvas.dataset.labels) return; 
+
+            const title = canvas.dataset.title;
+            let labels;
+            try {
+                labels = JSON.parse(canvas.dataset.labels);
+            } catch (e) {
+                console.error(`Failed to parse chart labels for canvas #${canvas.id}:`, canvas.dataset.labels, e);
                 return;
             }
-            const isResultsVisible = !resultsSection.classList.contains('hidden');
-            const isPayAllocationChartVisible = !payAllocationChartSection.classList.contains('hidden');
-            const isAnnuityVisible = !annuityInsightsSection.classList.contains('hidden');
-            const isLegalVisible = !legalSection.classList.contains('hidden');
-            
-            payeResultsBox.style.display = isResultsVisible ? 'block' : 'none';
-            payAllocationChartSection.style.display = isPayAllocationChartVisible ? 'block' : 'none';
-            annuityInsightsSection.style.display = isAnnuityVisible ? 'block' : 'none';
-            legalSection.style.display = isLegalVisible ? 'block' : 'none';
 
-
-            [financialDetailsBox, payeResultsBox, payAllocationChartSection, annuityInsightsSection, ctaBox, legalSection].forEach(el => { 
-                el.style.gridColumn = ''; el.style.gridRow = '';
-            });
-            
-            if (window.innerWidth >= 1024) {
-                bentoGrid.classList.remove('initial-view');
-                financialDetailsBox.style.gridColumn = '1 / 2';
-                
-                let rightColRowCount = 0;
-                if(isResultsVisible) rightColRowCount++;
-                if(isPayAllocationChartVisible) rightColRowCount++;
-                
-                financialDetailsBox.style.gridRow = `1 / span ${Math.max(1, rightColRowCount)}`;
-
-
-                let currentRowForRightCol = 1;
-                if (isResultsVisible) {
-                    payeResultsBox.style.gridColumn = '2 / 4';
-                    payeResultsBox.style.gridRow = `${currentRowForRightCol} / span 1`;
-                    currentRowForRightCol++;
+            if (chartType === 'pie') {
+                if (!canvas.dataset.values) return;
+                let values;
+                try {
+                    values = JSON.parse(canvas.dataset.values);
+                } catch(e) {
+                    console.error(`Failed to parse chart values for canvas #${canvas.id}:`, canvas.dataset.values, e);
+                    return;
                 }
-                 if (isPayAllocationChartVisible) {
-                    payAllocationChartSection.style.gridColumn = '2 / 4'; 
-                    payAllocationChartSection.style.gridRow = `${currentRowForRightCol} / span 1`;
-                    currentRowForRightCol++;
-                 }
-                
-                let nextFullWidthRowStart = Math.max(1, rightColRowCount) + 1;
-                 if (!isResultsVisible && !isPayAllocationChartVisible) { 
-                    financialDetailsBox.style.gridColumn = '1 / -1'; 
-                    nextFullWidthRowStart = 2; 
-                 }
-
-
-                 if (isAnnuityVisible) {
-                    annuityInsightsSection.style.gridColumn = '1 / -1'; 
-                    annuityInsightsSection.style.gridRow = `${nextFullWidthRowStart} / span 1`;
-                    nextFullWidthRowStart++;
+                const showLegend = canvas.id.includes('current');
+                renderPieChart(canvas.id, title, labels, values, showLegend, false);
+            } else if (chartType === 'line') {
+                if (!canvas.dataset.datasets) return;
+                let datasets;
+                try {
+                    datasets = JSON.parse(canvas.dataset.datasets);
+                } catch(e) {
+                     console.error(`Failed to parse chart datasets for canvas #${canvas.id}:`, canvas.dataset.datasets, e);
+                    return;
                 }
-
-                ctaBox.style.gridColumn = '1 / -1'; 
-                ctaBox.style.gridRow = `${nextFullWidthRowStart} / span 1`;
-                nextFullWidthRowStart++;
-
-                if (isLegalVisible) {
-                    legalSection.style.gridColumn = '1 / -1';
-                    legalSection.style.gridRow = `${nextFullWidthRowStart} / span 1`;
+                const colors = getChartColors();
+                const datasetConfigs = datasets.map((ds, i) => ({
+                    label: ds.label,
+                    data: ds.data,
+                    labels: labels,
+                    borderColor: i === 0 ? colors.line.borderColor : colors.line.borderColorAlt,
+                    backgroundColor: i === 0 ? colors.line.backgroundColor : colors.line.backgroundColorAlt
+                }));
+                renderLineChart(canvas.id, title, datasetConfigs);
+            } else if (chartType === 'annual-pie') {
+                if (!canvas.dataset.values) return;
+                let values;
+                 try {
+                    values = JSON.parse(canvas.dataset.values);
+                } catch(e) {
+                    console.error('Failed to parse chart values for canvas #annualPayePieChart:', canvas.dataset.values, e);
+                    return;
                 }
-
-
-            } else if (window.innerWidth >= 768) { // Tablet Layout
-                 bentoGrid.classList.remove('initial-view');
-                 financialDetailsBox.style.gridColumn = 'span 2'; 
-                 if(isResultsVisible) payeResultsBox.style.gridColumn = 'span 2';
-                 if(isPayAllocationChartVisible) payAllocationChartSection.style.gridColumn = 'span 2';
-                 if(isAnnuityVisible) annuityInsightsSection.style.gridColumn = 'span 2';
-                 if(isLegalVisible) legalSection.style.gridColumn = 'span 2';
-                 ctaBox.style.gridColumn = 'span 2';
-            } else { // Mobile Layout
-                bentoGrid.classList.remove('initial-view');
-                financialDetailsBox.style.gridColumn = 'span 1'; 
-                if(isResultsVisible) payeResultsBox.style.gridColumn = 'span 1';
-                if(isPayAllocationChartVisible) payAllocationChartSection.style.gridColumn = 'span 1';
-                if(isAnnuityVisible) annuityInsightsSection.style.gridColumn = 'span 1';
-                if(isLegalVisible) legalSection.style.gridColumn = 'span 1';
-                ctaBox.style.gridColumn = 'span 1';
+                const colors = getChartColors();
+                renderPieChart(
+                    'annualPayePieChart', 
+                    null, 
+                    labels,
+                    values, 
+                    true, 
+                    [colors.pie.nisHealth, colors.pie.incomeTax, colors.pie.takeHome],
+                    true
+                );
             }
         }
         
-        // --- New Function to Attach Event Listeners for Recommendation Cards ---
-        function attachCardEventListeners(
-            cardIndex, ids, percentValue, annualContrib, 
-            currentIncomeTax, yearsToRet, 
-            deductibleNIS, deductibleRegAnnuity, 
-            taxableIncome, healthSurcharge, totalNIS, 
-            takeHome, grossIncome, currentTotalPAYEAnnual 
-        ) {
+        function attachCardEventListeners(cardIndex, ids) {
             const visualizeBtn = document.getElementById(ids.visualizeBtn);
             const chartsWrapper = document.getElementById(ids.chartsWrapper);
             const taxView = document.getElementById(ids.taxView);
             const growthView = document.getElementById(ids.growthView);
-            const summary = document.getElementById(ids.summary);
             const toggleBtn = document.getElementById(ids.toggleBtn);
 
-            if (!visualizeBtn || !chartsWrapper) {
-                console.error(`Card ${cardIndex} elements not found for visualizeBtn or chartsWrapper. IDs:`, ids);
-                return;
+            if (visualizeBtn && chartsWrapper) {
+                 visualizeBtn.addEventListener('click', function(event) {
+                    if (window.innerWidth < 768) {
+                        event.preventDefault();
+                        resetMobileZoom();
+                    }
+                    const isVisible = chartsWrapper.classList.contains('is-visible');
+                    chartsWrapper.classList.toggle('is-visible', !isVisible);
+                    visualizeBtn.textContent = isVisible ? 'Explore Plan' : 'Hide Details';
+
+                    if (!isVisible) {
+                        chartsWrapper.querySelectorAll('canvas').forEach(canvas => chartObserver.observe(canvas));
+                    }
+                });
             }
 
-            visualizeBtn.addEventListener('click', function(event) { 
-                if (window.innerWidth < 768) { 
-                    event.preventDefault();
-                    resetMobileZoom();
-                }
-                const isCurrentlyVisible = chartsWrapper.style.display !== 'none';
-                chartsWrapper.style.display = isCurrentlyVisible ? 'none' : 'block'; // Toggle visibility
-                visualizeBtn.textContent = isCurrentlyVisible ? 'Explore Plan' : 'Hide Details';
-
-                if (!isCurrentlyVisible) { // This means charts are NOW being made visible
-                    if (currentIncomeTax > 0.01) { 
-                        const remainingCapRoom = Math.max(0, TAX_CONSTANTS.MAX_DEDUCTIBLE_NIS_ANNUITY_COMBINED - (deductibleNIS + deductibleRegAnnuity));
-                        const deductiblePortion = Math.min(annualContrib, remainingCapRoom);
-                        const taxWithAnnuity = calculateIncomeTax(Math.max(0, taxableIncome - deductiblePortion));
-                        
-                        renderPieChart(ids.pieCurrent, 'Your Pay: Before New Savings', 
-                            ['Total PAYE', 'Take-home Pay'], 
-                            [currentTotalPAYEAnnual, takeHome],
-                            true 
-                        );
-                        
-                        const potentialPAYEWithThisAnnuityScenario = taxWithAnnuity + healthSurcharge + totalNIS;
-                        const potentialTakeHomeWithThisAnnuityScenario = grossIncome - potentialPAYEWithThisAnnuityScenario;
-                        renderPieChart(ids.piePotential, 'Your Pay: With New Savings', 
-                            ['Total PAYE', 'Take-home Pay'], 
-                            [potentialPAYEWithThisAnnuityScenario, potentialTakeHomeWithThisAnnuityScenario],
-                            false 
-                        );
-                        
-                        if (summary) { 
-                            summary.innerHTML = `Potential Annual Tax Saving: <strong class="text-lg text-[var(--secondary-accent)]">${formatCurrency(currentIncomeTax - taxWithAnnuity, 0)}</strong>`;
-                        }
-                        if (taxView) taxView.style.display = 'block';
-                        if (growthView) growthView.style.display = 'none';
-                        if (toggleBtn) toggleBtn.textContent = 'See Growth Chart';
-
-                    } else if (yearsToRet > 0) { 
-                        const growthData = generateGrowthData(annualContrib, ASSUMED_ANNUITY_INTEREST_RATE, yearsToRet);
-                        const chartColors = getChartColors();
-                        renderLineChart(ids.growth, 'How Your Savings Could Grow', [{ 
-                            label: 'Growth', 
-                            data: growthData.data, 
-                            labels: growthData.labels, 
-                            borderColor: chartColors.line.borderColor, 
-                            backgroundColor: chartColors.line.backgroundColor, 
-                            pointBackgroundColor: chartColors.line.pointBackgroundColor, 
-                            pointBorderColor: chartColors.line.pointBorderColor 
-                        }]);
-                    }
-                    // After charts are potentially rendered and the wrapper is displayed, scroll it into view
-                     if (chartsWrapper.style.display === 'block') {
-                        setTimeout(() => { 
-                            chartsWrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                        }, 50); 
-                    }
-                }
-            });
-
-            if (currentIncomeTax > 0.01 && toggleBtn && taxView && growthView) {
-                toggleBtn.addEventListener('click', function(event) { 
+            if (toggleBtn && taxView && growthView) {
+                toggleBtn.addEventListener('click', function(event) {
                      if (window.innerWidth < 768) { 
                         event.preventDefault();
                         resetMobileZoom();
                     }
                     const isTaxViewVisible = taxView.style.display !== 'none';
-                    const chartColors = getChartColors();
-                    if (isTaxViewVisible) { 
-                        taxView.style.display = 'none';
-                        growthView.style.display = 'block';
-                        toggleBtn.textContent = 'See Tax Impact';
-                        if (yearsToRet > 0) {
-                            const remainingCapRoom = Math.max(0, TAX_CONSTANTS.MAX_DEDUCTIBLE_NIS_ANNUITY_COMBINED - (deductibleNIS + deductibleRegAnnuity));
-                            const deductiblePortion = Math.min(annualContrib, remainingCapRoom);
-                            const taxSaving = currentIncomeTax - calculateIncomeTax(Math.max(0, taxableIncome - deductiblePortion));
-                            
-                            let datasets = [{ 
-                                label: 'Base Growth', 
-                                data: generateGrowthData(annualContrib, ASSUMED_ANNUITY_INTEREST_RATE, yearsToRet).data, 
-                                labels: generateGrowthData(annualContrib, ASSUMED_ANNUITY_INTEREST_RATE, yearsToRet).labels, 
-                                borderColor: chartColors.line.borderColor, 
-                                backgroundColor: chartColors.line.backgroundColor, 
-                                pointBackgroundColor: chartColors.line.pointBackgroundColor, 
-                                pointBorderColor: chartColors.line.pointBorderColor 
-                            }];
-                            if (taxSaving > 0) {
-                                datasets.push({ 
-                                    label: 'Growth + Reinvested Tax Savings', 
-                                    data: generateGrowthData(annualContrib + taxSaving, ASSUMED_ANNUITY_INTEREST_RATE, yearsToRet).data, 
-                                    labels: generateGrowthData(annualContrib + taxSaving, ASSUMED_ANNUITY_INTEREST_RATE, yearsToRet).labels, 
-                                    borderColor: chartColors.line.borderColorAlt, 
-                                    backgroundColor: chartColors.line.backgroundColorAlt, 
-                                    pointBackgroundColor: chartColors.line.borderColorAlt, 
-                                    pointBorderColor: chartColors.line.pointBorderColor 
-                                });
-                            }
-                            renderLineChart(ids.growth, 'Savings Growth: Base vs. Reinvested Tax Savings', datasets);
-                        }
+                    taxView.style.display = isTaxViewVisible ? 'none' : 'block';
+                    growthView.style.display = isTaxViewVisible ? 'block' : 'none';
+                    toggleBtn.textContent = isTaxViewVisible ? 'Click here to see growth chart' : 'Click here to see tax impact';
+                    
+                    if (growthView.style.display === 'block') { 
+                        renderCanvasChart(growthView.querySelector('canvas'));
                     } else { 
-                        growthView.style.display = 'none';
-                        taxView.style.display = 'block';
-                        toggleBtn.textContent = 'See Growth Chart';
-                        const remainingCapRoom = Math.max(0, TAX_CONSTANTS.MAX_DEDUCTIBLE_NIS_ANNUITY_COMBINED - (deductibleNIS + deductibleRegAnnuity));
-                        const deductiblePortion = Math.min(annualContrib, remainingCapRoom);
-                        const taxWithAnnuity = calculateIncomeTax(Math.max(0, taxableIncome - deductiblePortion));
-                        
-                        const potentialPAYEWithThisAnnuityScenario = taxWithAnnuity + healthSurcharge + totalNIS;
-                        const potentialTakeHomeWithThisAnnuityScenario = grossIncome - potentialPAYEWithThisAnnuityScenario;
-
-                        renderPieChart(ids.pieCurrent, 'Your Pay: Before New Savings', 
-                            ['Total PAYE', 'Take-home Pay'], 
-                            [currentTotalPAYEAnnual, takeHome],
-                            true
-                        );
-                        renderPieChart(ids.piePotential, 'Your Pay: With New Savings', 
-                            ['Total PAYE', 'Take-home Pay'], 
-                            [potentialPAYEWithThisAnnuityScenario, potentialTakeHomeWithThisAnnuityScenario],
-                            false
-                        );
-                    }
-                     if (chartsWrapper.style.display === 'block') { 
-                        setTimeout(() => {
-                            chartsWrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                        }, 50);
+                        taxView.querySelectorAll('canvas').forEach(renderCanvasChart);
                     }
                 });
             }
         }
 
-        // --- Function to update frequency-specific text ---
+
         function updateFrequencySpecificText(frequencyString) {
+            if (payBreakdownTitleEl) {
+                payBreakdownTitleEl.innerHTML = `<span class="bento-step-indicator">2</span>Your Pay Breakdown (${frequencyString})`;
+            }
+
             const freqText = capitalizeFirstLetter(frequencyString);
             const perFreqText = `(per ${freqText.toLowerCase()})`;
             const perFreqPlaceholder = `TTD (per ${freqText.toLowerCase()})`;
 
             const grossIncomeLabelEl = document.getElementById('grossIncomeLabel');
             if (grossIncomeLabelEl && grossIncomeLabelEl.childNodes[0]) { 
-                grossIncomeLabelEl.childNodes[0].nodeValue = `Your Gross ${freqText} Pay (before anything's taken out) `;
+                grossIncomeLabelEl.childNodes[0].nodeValue = `Your Gross Pay `;
             }
 
             const companyPensionAmountLabelEl = document.getElementById('companyPensionAmountLabel');
-            if (companyPensionAmountLabelEl) {
-                companyPensionAmountLabelEl.textContent = `Contribution Amount ${perFreqText}`;
-            }
-            if (companyPensionInput) { 
-                companyPensionInput.placeholder = perFreqPlaceholder;
-            }
+            if (companyPensionAmountLabelEl) companyPensionAmountLabelEl.textContent = `Contribution Amount ${perFreqText}`;
+            if (companyPensionInput) companyPensionInput.placeholder = perFreqPlaceholder;
             
             const personalAnnuityLabelEl = document.getElementById('personalAnnuityLabel');
             if (personalAnnuityLabelEl && personalAnnuityLabelEl.childNodes[0]) { 
                  personalAnnuityLabelEl.childNodes[0].nodeValue = `Your Personal Registered Annuity Savings ${perFreqText} `;
             }
-            if (personalAnnuityInput) { 
-                personalAnnuityInput.placeholder = perFreqPlaceholder;
+            if (personalAnnuityInput) personalAnnuityInput.placeholder = perFreqPlaceholder;
+            
+            const labelsToUpdate = {
+                'labelGrossIncome': `Your Gross ${freqText} Pay`,
+                'labelPersonalAllowance': `Your Tax-Free Allowance (${freqText})`,
+                'labelTotalNIS': `Your Total NIS Payment (${freqText})`,
+                'labelDeductibleNIS': `NIS Part That Lowers Tax (${freqText})`,
+                'labelDeductibleRegAnnuity': `Annuity/Pension That Lowers Tax (${freqText})`,
+                'labelTotalDeductions': `Total Tax-Lowering Deductions (${freqText})`,
+                'labelTaxableIncome': `Income You Pay Tax On (${freqText})`,
+                'labelIncomeTax': `Income Tax Payable (${freqText})`,
+                'labelTotalPAYE': `Total PAYE (Tax + NIS + Health) (${freqText})`
+            };
+
+            for (const [id, text] of Object.entries(labelsToUpdate)) {
+                const el = document.getElementById(id);
+                if (el) el.textContent = text;
             }
 
-            const resultsFrequencyDisplayEl = document.getElementById('resultsFrequencyDisplay');
-            if (resultsFrequencyDisplayEl) resultsFrequencyDisplayEl.textContent = freqText;
-            
-            const payAllocationFrequencyDisplayEl = document.getElementById('payAllocationFrequencyDisplay'); // New
-            if(payAllocationFrequencyDisplayEl) payAllocationFrequencyDisplayEl.textContent = freqText;
-
-
-            const labelGrossIncomeEl = document.getElementById('labelGrossIncome');
-            if (labelGrossIncomeEl) labelGrossIncomeEl.textContent = `Your Gross ${freqText} Pay`;
-            
-            const labelPersonalAllowanceEl = document.getElementById('labelPersonalAllowance');
-            if (labelPersonalAllowanceEl) labelPersonalAllowanceEl.textContent = `Your Tax-Free Allowance (${freqText})`;
-            
-            const labelTotalNISEl = document.getElementById('labelTotalNIS');
-            if(labelTotalNISEl) labelTotalNISEl.textContent = `Your Total NIS Payment (${freqText})`;
-
-            const labelDeductibleNISEl = document.getElementById('labelDeductibleNIS');
-            if(labelDeductibleNISEl) labelDeductibleNISEl.textContent = `NIS Part That Lowers Tax (${freqText})`;
-            
-            const labelDeductibleRegAnnuityEl = document.getElementById('labelDeductibleRegAnnuity');
-            if(labelDeductibleRegAnnuityEl) labelDeductibleRegAnnuityEl.textContent = `Annuity/Pension That Lowers Tax (${freqText})`;
-            
-            const labelTotalDeductionsEl = document.getElementById('labelTotalDeductions');
-            if(labelTotalDeductionsEl) labelTotalDeductionsEl.textContent = `Total Tax-Lowering Deductions (${freqText})`;
-            
-            const labelTaxableIncomeEl = document.getElementById('labelTaxableIncome');
-            if(labelTaxableIncomeEl) labelTaxableIncomeEl.textContent = `Income You Pay Tax On (${freqText})`;
-            
-            const labelIncomeTaxEl = document.getElementById('labelIncomeTax');
-            if(labelIncomeTaxEl) labelIncomeTaxEl.textContent = `Income Tax Payable (${freqText})`;
-            
-            const labelTotalPAYEEl = document.getElementById('labelTotalPAYE');
-            if(labelTotalPAYEEl) labelTotalPAYEEl.textContent = `Total PAYE (Tax + NIS + Health) (${freqText})`;
-            
             const labelTakeHomePaySelectedFreqEl = document.getElementById('labelTakeHomePaySelectedFreq');
             if(labelTakeHomePaySelectedFreqEl) labelTakeHomePaySelectedFreqEl.textContent = `Your ${freqText} Take-Home Pay`;
         }
         
-        // --- Main Calculation Function ---
         function performFullCalculation() {
-            const age = parseInt(ageInput.value) || 0;
-            const incomeFrequency = incomeFrequencySelect.value; 
-            const grossIncomeInputVal = parseFloat(grossIncomeInput.value) || 0;
+            const age = parseInt(ageInput.value);
+            const grossIncomeInputVal = parseFloat(grossIncomeInput.value);
 
+            if (isNaN(age) || age <= 0) {
+                 showAlert("Please enter a valid Age to proceed.");
+                 return false;
+            }
+             if (isNaN(grossIncomeInputVal) || grossIncomeInputVal <= 0) {
+                 showAlert("Please enter a valid Gross Pay to proceed.");
+                 return false;
+            }
+             
+            const incomeFrequency = incomeFrequencySelect.value;
             const frequencyString = capitalizeFirstLetter(incomeFrequency); 
             const frequencyDivisor = getFrequencyDivisor(incomeFrequency);
             
             updateFrequencySpecificText(frequencyString); 
             
-            // Mandatory income check happens here now
-            if (grossIncomeInputVal <= 0 ) { 
-                showAlert("Please enter your Gross Income to calculate your plan."); 
-                if(calculateButton) calculateButton.textContent = "Show Me My Plan!"; // Reset button text if calc fails
-                window.initialCalculationPerformed = false; // Ensure this is false if calc fails early
-                return;
-            }
-
-
-            if (calculateButton && window.initialCalculationPerformed) { 
-                calculateButton.textContent = "UPDATE MY PLAN";
-            } else if (calculateButton) {
-                 if (calculateButton.textContent !== "UPDATE MY PLAN") { 
-                    calculateButton.textContent = "Show Me My Plan!";
-                }
-            }
-
             let companyPensionContribPerFreq = 0;
             let personalAnnuityContribPerFreq = 0;
             let totalAnnualRegisteredContrib = 0;
@@ -1427,85 +1306,66 @@
                 personalAnnuityContribPerFreq = parseFloat(personalAnnuityInput.value) || 0;
 
                 let multiplier = 1;
-                if (incomeFrequency === 'monthly') multiplier = TIME_CONSTANTS.MONTHS_IN_YEAR;
-                else if (incomeFrequency === 'fortnightly') multiplier = TIME_CONSTANTS.FORTNIGHTS_IN_YEAR;
-                else if (incomeFrequency === 'weekly') multiplier = TIME_CONSTANTS.WEEKS_IN_YEAR;
+                if (incomeFrequency === 'monthly') multiplier = MONTHS_IN_YEAR;
+                else if (incomeFrequency === 'fortnightly') multiplier = FORTNIGHTS_IN_YEAR;
+                else if (incomeFrequency === 'weekly') multiplier = WEEKS_IN_YEAR;
 
                 totalAnnualRegisteredContrib = (companyPensionContribPerFreq * multiplier) + (personalAnnuityContribPerFreq * multiplier);
             }
 
 
-            if (age <= 0 || age >= RETIREMENT_AGE) { 
-                if (window.initialCalculationPerformed || document.activeElement === calculateButton) {
-                     showAlert(`Please enter a valid current age below ${RETIREMENT_AGE} (e.g., 18-${RETIREMENT_AGE -1}). Projections are to age ${RETIREMENT_AGE}.`);
-                }
-                if (age < RETIREMENT_AGE && age <=0) return; 
+            if (age >= RETIREMENT_AGE) { 
+                 showAlert(`Please enter a valid current age below ${RETIREMENT_AGE} (e.g., 18-${RETIREMENT_AGE -1}). Projections are to age ${RETIREMENT_AGE}.`);
+                return false;
             }
             
-             if (companyPensionContribPerFreq < 0 && (window.initialCalculationPerformed || document.activeElement === calculateButton)) { 
+             if (companyPensionContribPerFreq < 0) { 
                 showAlert("Company Pension contribution cannot be negative.");
                 if(companyPensionInput) companyPensionInput.value = 0; 
                 if(companyPensionPercentageInput) companyPensionPercentageInput.value = '';
-                return;
+                return false;
             }
-            if (personalAnnuityContribPerFreq < 0 && (window.initialCalculationPerformed || document.activeElement === calculateButton)) { 
+            if (personalAnnuityContribPerFreq < 0) { 
                 showAlert("Personal Annuity contribution cannot be negative.");
-                if(personalAnnuityInput) personalAnnuityInput.value = 0; return;
+                if(personalAnnuityInput) personalAnnuityInput.value = 0; return false;
             }
 
             let grossAnnualIncome = 0;
             switch (incomeFrequency) {
                 case 'annual': grossAnnualIncome = grossIncomeInputVal; break;
-                case 'monthly': grossAnnualIncome = grossIncomeInputVal * TIME_CONSTANTS.MONTHS_IN_YEAR; break;
-                case 'fortnightly': grossAnnualIncome = grossIncomeInputVal * TIME_CONSTANTS.FORTNIGHTS_IN_YEAR; break;
-                case 'weekly': grossAnnualIncome = grossIncomeInputVal * TIME_CONSTANTS.WEEKS_IN_YEAR; break;
-                default: if (window.initialCalculationPerformed || document.activeElement === calculateButton) showAlert("Invalid income frequency selected."); return;
+                case 'monthly': grossAnnualIncome = grossIncomeInputVal * MONTHS_IN_YEAR; break;
+                case 'fortnightly': grossAnnualIncome = grossIncomeInputVal * FORTNIGHTS_IN_YEAR; break;
+                case 'weekly': grossAnnualIncome = grossIncomeInputVal * WEEKS_IN_YEAR; break;
+                default: showAlert("Invalid income frequency selected."); return false;
             }
             
-            if (grossAnnualIncome <=0 && (window.initialCalculationPerformed || document.activeElement === calculateButton)) { 
-                 showAlert("Calculated Annual Income is not valid. Please check your input."); return;
-            }
-
             const employeeNISWeekly = getEmployeeNISWeeklyContribution(grossAnnualIncome);
-            const totalEmployeeNISAnnual = employeeNISWeekly * TIME_CONSTANTS.WEEKS_IN_YEAR;
-            const healthSurchargeWeekly = getHealthSurchargeWeeklyRate(grossAnnualIncome);
-            const healthSurchargeAnnual = healthSurchargeWeekly * TIME_CONSTANTS.WEEKS_IN_YEAR;
-            const deductibleNISPortion = totalEmployeeNISAnnual * NIS_CONSTANTS.EMPLOYEE_CONTRIB_PERCENTAGE; 
+            const totalEmployeeNISAnnual = employeeNISWeekly * WEEKS_IN_YEAR;
+            const healthSurchargeAnnual = getHealthSurchargeWeeklyRate(grossAnnualIncome) * WEEKS_IN_YEAR;
+            const deductibleNISPortion = totalEmployeeNISAnnual * 0.70; 
             let actualDeductibleRegisteredAnnuityInput = 0; let actualDeductibleNIS = 0;
 
-            if (deductibleNISPortion >= TAX_CONSTANTS.MAX_DEDUCTIBLE_NIS_ANNUITY_COMBINED) {
-                actualDeductibleNIS = TAX_CONSTANTS.MAX_DEDUCTIBLE_NIS_ANNUITY_COMBINED; actualDeductibleRegisteredAnnuityInput = 0; 
+            if (deductibleNISPortion >= MAX_DEDUCTIBLE_NIS_ANNUITY_COMBINED) {
+                actualDeductibleNIS = MAX_DEDUCTIBLE_NIS_ANNUITY_COMBINED; actualDeductibleRegisteredAnnuityInput = 0; 
             } else {
                 actualDeductibleNIS = deductibleNISPortion;
-                actualDeductibleRegisteredAnnuityInput = Math.min(totalAnnualRegisteredContrib, TAX_CONSTANTS.MAX_DEDUCTIBLE_NIS_ANNUITY_COMBINED - actualDeductibleNIS);
+                actualDeductibleRegisteredAnnuityInput = Math.min(totalAnnualRegisteredContrib, MAX_DEDUCTIBLE_NIS_ANNUITY_COMBINED - actualDeductibleNIS);
             }
             
-            const totalAllowableDeductionsAnnual = TAX_CONSTANTS.PERSONAL_ALLOWANCE + actualDeductibleNIS + actualDeductibleRegisteredAnnuityInput;
+            const totalAllowableDeductionsAnnual = PERSONAL_ALLOWANCE + actualDeductibleNIS + actualDeductibleRegisteredAnnuityInput;
             let taxableIncomeAnnual = Math.max(0, grossAnnualIncome - totalAllowableDeductionsAnnual); 
             let incomeTaxAnnual = calculateIncomeTax(taxableIncomeAnnual);
-            const totalPAYEAnnual = incomeTaxAnnual + healthSurchargeAnnual + totalEmployeeNISAnnual; 
+            const totalPAYEAnnual = incomeTaxAnnual + totalEmployeeNISAnnual + healthSurchargeAnnual; 
             const annualTakeHomePay = grossAnnualIncome - totalPAYEAnnual; 
             
             document.getElementById('resGrossIncomeSelectedFreq').textContent = formatCurrency(grossIncomeInputVal); 
-            document.getElementById('resPersonalAllowanceSelectedFreq').textContent = formatCurrency(TAX_CONSTANTS.PERSONAL_ALLOWANCE / frequencyDivisor);
+            document.getElementById('resPersonalAllowanceSelectedFreq').textContent = formatCurrency(PERSONAL_ALLOWANCE / frequencyDivisor);
             
-            let nisForDisplayFreq, hsForDisplayFreq, incomeTaxForFrequency, takeHomeForFrequency;
-            if (incomeFrequency === 'monthly') { 
-                nisForDisplayFreq = employeeNISWeekly * TIME_CONSTANTS.FOUR_WEEKS; 
-                hsForDisplayFreq = healthSurchargeWeekly * TIME_CONSTANTS.FOUR_WEEKS; 
-            } else if (incomeFrequency === 'fortnightly') { 
-                nisForDisplayFreq = employeeNISWeekly * 2; 
-                hsForDisplayFreq = healthSurchargeWeekly * 2; 
-            } else if (incomeFrequency === 'weekly') { 
-                nisForDisplayFreq = employeeNISWeekly; 
-                hsForDisplayFreq = healthSurchargeWeekly; 
-            } else { // Annual
-                nisForDisplayFreq = totalEmployeeNISAnnual; 
-                hsForDisplayFreq = healthSurchargeAnnual; 
-            }
-            incomeTaxForFrequency = incomeTaxAnnual / frequencyDivisor;
-            takeHomeForFrequency = annualTakeHomePay / frequencyDivisor;
-
+            let nisForDisplayFreq, hsForDisplayFreq;
+            if (incomeFrequency === 'monthly') { nisForDisplayFreq = employeeNISWeekly * FOUR_WEEKS; hsForDisplayFreq = getHealthSurchargeWeeklyRate(grossAnnualIncome) * FOUR_WEEKS; } 
+            else if (incomeFrequency === 'fortnightly') { nisForDisplayFreq = employeeNISWeekly * 2; hsForDisplayFreq = getHealthSurchargeWeeklyRate(grossAnnualIncome) * 2; } 
+            else if (incomeFrequency === 'weekly') { nisForDisplayFreq = employeeNISWeekly; hsForDisplayFreq = getHealthSurchargeWeeklyRate(grossAnnualIncome); } 
+            else { nisForDisplayFreq = totalEmployeeNISAnnual; hsForDisplayFreq = healthSurchargeAnnual; }
 
             document.getElementById('resTotalNISSelectedFreq').textContent = formatCurrency(nisForDisplayFreq);
             document.getElementById('resHealthSurchargeSelectedFreq').textContent = formatCurrency(hsForDisplayFreq);
@@ -1513,26 +1373,21 @@
             document.getElementById('resDeductibleRegAnnuitySelectedFreq').textContent = formatCurrency(actualDeductibleRegisteredAnnuityInput / frequencyDivisor);
             document.getElementById('resTotalDeductionsSelectedFreq').textContent = formatCurrency(totalAllowableDeductionsAnnual / frequencyDivisor);
             document.getElementById('resTaxableIncomeSelectedFreq').textContent = formatCurrency(taxableIncomeAnnual / frequencyDivisor); 
-            document.getElementById('resIncomeTaxSelectedFreq').textContent = formatCurrency(incomeTaxForFrequency);
+            document.getElementById('resIncomeTaxSelectedFreq').textContent = formatCurrency(incomeTaxAnnual / frequencyDivisor);
             document.getElementById('resTotalPAYESelectedFreq').textContent = formatCurrency(totalPAYEAnnual / frequencyDivisor);
             document.getElementById('resAnnualTakeHomePay').textContent = formatCurrency(annualTakeHomePay); 
-            document.getElementById('resTakeHomePaySelectedFreq').textContent = formatCurrency(takeHomeForFrequency); 
+            document.getElementById('resTakeHomePaySelectedFreq').textContent = formatCurrency(annualTakeHomePay / frequencyDivisor); 
             
-            resultsSection.classList.remove('hidden');
-            payAllocationChartSection.classList.remove('hidden'); 
-            annuityInsightsSection.classList.remove('hidden');
-            legalSection.classList.remove('hidden'); // Show legal section
-            adjustBentoLayout(); 
+            document.getElementById('results-wrapper').classList.remove('hidden');
+            document.getElementById('annuityInsightsSection').classList.remove('hidden');
+            document.getElementById('main-cta').classList.remove('hidden');
+            document.getElementById('legalSection').classList.remove('hidden');
 
-            renderPieChart('payAllocationPieChart', `Your ${frequencyString} Pay Allocation`,
-                ['Health Surcharge', 'NIS', 'Income Tax', 'Take-home Pay'],
-                [hsForDisplayFreq, nisForDisplayFreq, incomeTaxForFrequency, takeHomeForFrequency],
-                true 
-            );
-            
-            if (resultsSection && !resultsSection.classList.contains('hidden')) { 
-                resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
+            const annualPayeCanvas = document.getElementById('annualPayePieChart');
+            const totalNisAndHealth = totalEmployeeNISAnnual + healthSurchargeAnnual;
+            annualPayeCanvas.dataset.values = JSON.stringify([totalNisAndHealth, incomeTaxAnnual, annualTakeHomePay]);
+            annualPayeCanvas.dataset.labels = JSON.stringify(['NIS & Health Surcharge', 'Income Tax', 'Take-home Pay']);
+            chartObserver.observe(annualPayeCanvas);
 
 
             const existingAnnuityInsightEl = document.getElementById('existingAnnuityInsight');
@@ -1563,9 +1418,10 @@
 
             const percentages = [0.10, 0.15, 0.20]; 
             const yearsToRetirement = Math.max(0, RETIREMENT_AGE - age);
-
+            
             percentages.forEach((percent, index) => {
                 const recommendedAnnualContrib = grossAnnualIncome * percent;
+                const isLastCard = index === percentages.length - 1;
                 const cardSpecificIds = { 
                     pieCurrent: `currentPayePieChart${index}`, piePotential: `potentialPayePieChart${index}`, 
                     growth: `growthChart${index}`, visualizeBtn: `visualizeBtn${index}`, 
@@ -1573,96 +1429,111 @@
                     growthView: `growthChartView${index}`, summary: `payeSavingsSummary${index}`, 
                     toggleBtn: `toggleChartViewBtn${index}`
                 };
+                
+                let cardHTML = `<div class="recommendation-card fade-in-on-scroll">
+                        <h4 class="bento-section-title text-md text-[var(--success-color)] mb-3">Plan: Save ${Math.round(percent*100)}% of Your Pay</h4>
+                        <div class="space-y-2 text-sm">
+                            <p>
+                                <strong>Your Contribution:</strong>
+                                <span class="font-semibold text-[var(--text-primary)]">${formatCurrency(recommendedAnnualContrib, 0)} / year</span>
+                                <span class="text-xs text-[var(--text-muted)]">(${formatCurrency(recommendedAnnualContrib / frequencyDivisor, 0)} per ${frequencyString})</span>
+                            </p>`;
 
-                let cardHTML = `<div class="recommendation-card"> <h4 class="bento-section-title text-md text-[var(--success-color)] mb-2">Saving ${Math.round(percent*100)}% of Your Pay:</h4> <p class="text-sm text-[var(--text-secondary)]">If You Save This Yearly: <strong class="text-[var(--success-color)] font-semibold">${formatCurrency(recommendedAnnualContrib, 0)}</strong></p> <p class="text-sm text-[var(--text-secondary)]">That's about ${formatCurrency(recommendedAnnualContrib / frequencyDivisor, 0)} per ${frequencyString}!</p>`;
                 let futureValue = yearsToRetirement > 0 ? calculateFutureValueAnnuity(recommendedAnnualContrib, ASSUMED_ANNUITY_INTEREST_RATE, yearsToRetirement) : 0;
                 let taxSavingFromRecommendation = 0; 
 
                 if (incomeTaxAnnual > 0.01) { 
-                    const remainingCapRoom = Math.max(0, TAX_CONSTANTS.MAX_DEDUCTIBLE_NIS_ANNUITY_COMBINED - (actualDeductibleNIS + actualDeductibleRegisteredAnnuityInput));
+                    const remainingCapRoom = Math.max(0, MAX_DEDUCTIBLE_NIS_ANNUITY_COMBINED - (actualDeductibleNIS + actualDeductibleRegisteredAnnuityInput));
                     const deductiblePortion = Math.min(recommendedAnnualContrib, remainingCapRoom); 
                     if (deductiblePortion > 0) {
                         taxSavingFromRecommendation = incomeTaxAnnual - calculateIncomeTax(Math.max(0, taxableIncomeAnnual - deductiblePortion)); 
-                        cardHTML += `<p class="mt-2 text-sm font-medium text-[var(--text-secondary)]">Yearly Tax Saving Bonus: <strong class="text-[var(--secondary-accent)]">${formatCurrency(taxSavingFromRecommendation, 0)}</strong></p><p class="text-sm text-[var(--text-muted)]">(Based on ${formatCurrency(deductiblePortion, 0)} being tax-deductible)</p>`;
-                        if (yearsToRetirement > 0) cardHTML += `<p class="mt-1 text-sm font-medium text-[var(--text-secondary)]">Total Tax Saved by Age ${RETIREMENT_AGE} (est.): <strong class="text-[var(--secondary-accent)] font-semibold">${formatCurrency(taxSavingFromRecommendation * yearsToRetirement, 0)}</strong></p>`;
-                    } else cardHTML += `<p class="mt-2 text-sm text-[var(--text-secondary)]">Your tax deduction limit is likely maxed out. This plan focuses on pure growth!</p>`;
+                        cardHTML += `<p>
+                                        <strong>Annual Tax Saving:</strong>
+                                        <span class="font-semibold text-[var(--secondary-accent)]">${formatCurrency(taxSavingFromRecommendation, 0)}</span>
+                                     </p>`;
+                    }
                 }
-                if (yearsToRetirement > 0) cardHTML += `<p class="mt-1 text-sm font-medium text-[var(--text-secondary)]">Your Nest Egg at Age ${RETIREMENT_AGE} (est. ${ASSUMED_ANNUITY_INTEREST_RATE*100}% yearly growth): <strong class="text-[var(--success-color)] text-md">${formatCurrency(futureValue, 0)}</strong></p>`;
-                else if (age < RETIREMENT_AGE) cardHTML += `<p class="mt-1 text-sm font-medium text-[var(--text-secondary)]">Future Stash (1 yr): <strong class="text-[var(--success-color)] text-md">${formatCurrency(recommendedAnnualContrib * (1 + ASSUMED_ANNUITY_INTEREST_RATE), 0)}</strong></p>`;
-                else cardHTML += `<p class="mt-1 text-sm text-[var(--text-secondary)]">Future projection not applicable.</p>`;
                 
-                cardHTML += `<div class="mt-4"><button id="${cardSpecificIds.visualizeBtn}" class="text-xs secondary-action-button button-base py-1.5 px-4">Explore Plan</button></div> <div id="${cardSpecificIds.chartsWrapper}" class="charts-view-wrapper" style="display:none;">`;
-                if (incomeTaxAnnual <= 0.01) { 
-                     if (yearsToRetirement > 0) cardHTML += `<div id="${cardSpecificIds.growthView}" class="chart-container"><canvas id="${cardSpecificIds.growth}"></canvas></div>`;
-                     else cardHTML += `<p class="mt-2 text-sm text-[var(--text-secondary)] text-center">Future projection not applicable.</p>`;
-                } else { 
-                    cardHTML += `<div class="mt-3 mb-2 text-center"><button id="${cardSpecificIds.toggleBtn}" class="text-xs tertiary-action-button button-base py-1.5 px-4">See Growth Chart</button></div> 
-                                 <div id="${cardSpecificIds.taxView}">
-                                     <div class="grid md:grid-cols-2 gap-3">
-                                         <div class="chart-container pie-chart-container"><canvas id="${cardSpecificIds.pieCurrent}"></canvas></div>
-                                         <div class="chart-container pie-chart-container"><canvas id="${cardSpecificIds.piePotential}"></canvas></div>
-                                     </div>
-                                     <p id="${cardSpecificIds.summary}" class="text-center text-base font-semibold text-[var(--secondary-accent)] mt-4"></p>
-                                 </div>`; 
-                    if (yearsToRetirement > 0) cardHTML += `<div id="${cardSpecificIds.growthView}" class="chart-container" style="display:none;"><canvas id="${cardSpecificIds.growth}"></canvas></div>`;
-                    else cardHTML += `<div id="${cardSpecificIds.growthView}" style="display:none;"><p class="mt-2 text-sm text-[var(--text-secondary)] text-center">Future projection not applicable.</p></div>`;
+                if (yearsToRetirement > 0) {
+                    cardHTML += `<p>
+                                    <strong>Estimated Nest Egg at ${RETIREMENT_AGE}:</strong>
+                                    <span class="font-semibold text-[var(--success-color)] text-md">${formatCurrency(futureValue, 0)}</span>
+                                 </p>`;
+                } else if (age < RETIREMENT_AGE) {
+                     cardHTML += `<p>
+                                    <strong>Future Stash (1 yr):</strong>
+                                    <span class="font-semibold text-[var(--success-color)] text-md">${formatCurrency(recommendedAnnualContrib * (1 + ASSUMED_ANNUITY_INTEREST_RATE), 0)}</span>
+                                 </p>`;
                 }
-                cardHTML += `</div></div>`; 
-                recommendationsContainer.innerHTML += cardHTML;
+                
+                cardHTML += `</div>`;
+                cardHTML += `<div class="mt-4 flex flex-wrap gap-2">
+                                <button id="${cardSpecificIds.visualizeBtn}" class="flex-grow text-xs secondary-action-button button-base py-1.5 px-4">Explore Plan</button>
+                                <a href="https://wa.me/18683278273?text=Hello%20Kyron,%20I'm%20interested%20in%20the%20${Math.round(percent*100)}%25%20savings%20plan." target="_blank" class="flex-grow text-xs main-calc-button button-base py-1.5 px-4 text-center no-underline">Discuss This Plan</a>
+                            </div> <div id="${cardSpecificIds.chartsWrapper}" class="charts-view-wrapper"><div class="charts-content">`;
+                
+                if (incomeTaxAnnual <= 0.01) { 
+                     if (yearsToRetirement > 0) {
+                        const growthData = generateGrowthData(recommendedAnnualContrib, ASSUMED_ANNUITY_INTEREST_RATE, yearsToRetirement);
+                        cardHTML += `<div id="${cardSpecificIds.growthView}" class="chart-container"><canvas id="${cardSpecificIds.growth}" data-chart-type="line" data-title="How Your Savings Could Grow" data-labels='${JSON.stringify(growthData.labels)}' data-datasets='${JSON.stringify([{ label: 'Growth', data: growthData.data }])}'></canvas></div>`;
+                     } else {
+                         cardHTML += `<p class="mt-2 text-sm text-[var(--text-secondary)] text-center">Future projection not applicable.</p>`;
+                     }
+                } else { 
+                    cardHTML += `<div class="mt-3 mb-2 text-center"><button id="${cardSpecificIds.toggleBtn}" class="text-xs tertiary-action-button button-base py-1.5 px-4 glow-nudge-animation">Click here to see growth chart</button></div>`;
+                    
+                    const remainingCapRoom = Math.max(0, MAX_DEDUCTIBLE_NIS_ANNUITY_COMBINED - (actualDeductibleNIS + actualDeductibleRegisteredAnnuityInput));
+                    const deductiblePortion = Math.min(recommendedAnnualContrib, remainingCapRoom);
+                    const taxWithAnnuity = calculateIncomeTax(Math.max(0, taxableIncomeAnnual - deductiblePortion));
+                    const potentialPAYE = taxWithAnnuity + totalEmployeeNISAnnual + healthSurchargeAnnual;
+                    const potentialTakeHome = grossAnnualIncome - potentialPAYE;
 
-                setTimeout(() => {
-                    attachCardEventListeners(
-                        index, cardSpecificIds, percent, recommendedAnnualContrib, 
-                        incomeTaxAnnual, yearsToRetirement, 
-                        actualDeductibleNIS, actualDeductibleRegisteredAnnuityInput, 
-                        taxableIncomeAnnual, healthSurchargeAnnual, totalEmployeeNISAnnual, 
-                        annualTakeHomePay, grossAnnualIncome,
-                        totalPAYEAnnual 
-                    );
-                }, 50); 
+                    cardHTML += `<div id="${cardSpecificIds.taxView}"><div class="grid md:grid-cols-2 gap-3"><div class="chart-container pie-chart-container"><canvas id="${cardSpecificIds.pieCurrent}" data-chart-type="pie" data-title="Current Pay Breakdown" data-labels='${JSON.stringify(['Total PAYE', 'Take-home Pay'])}' data-values='${JSON.stringify([totalPAYEAnnual, annualTakeHomePay])}' data-show-legend="true"></canvas></div><div class="chart-container pie-chart-container"><canvas id="${cardSpecificIds.piePotential}" data-chart-type="pie" data-title="Potential Breakdown with Savings" data-labels='${JSON.stringify(['Total PAYE', 'Take-home Pay'])}' data-values='${JSON.stringify([potentialPAYE, potentialTakeHome])}' data-show-legend="false"></canvas></div></div><div class="text-center mt-4 flex flex-col items-center"><p class="text-sm text-[var(--text-secondary)] mb-1">Potential Annual Tax Saving:</p><span class="savings-highlight">${formatCurrency(incomeTaxAnnual - taxWithAnnuity, 0)}</span></div></div>`;
+                    
+                    if (yearsToRetirement > 0) {
+                        const taxSaving = incomeTaxAnnual - taxWithAnnuity;
+                        const baseGrowthData = generateGrowthData(recommendedAnnualContrib, ASSUMED_ANNUITY_INTEREST_RATE, yearsToRetirement);
+                        let growthDatasets = [{ label: 'Base Growth', data: baseGrowthData.data }];
+                        if (taxSaving > 0) {
+                            growthDatasets.push({ label: 'Growth + Reinvested Tax Savings', data: generateGrowthData(recommendedAnnualContrib + taxSaving, ASSUMED_ANNUITY_INTEREST_RATE, yearsToRetirement).data });
+                        }
+                        cardHTML += `<div id="${cardSpecificIds.growthView}" class="chart-container" style="display:none;"><canvas id="${cardSpecificIds.growth}" data-chart-type="line" data-title="Savings Growth: Base vs. Reinvested Tax Savings" data-labels='${JSON.stringify(baseGrowthData.labels)}' data-datasets='${JSON.stringify(growthDatasets)}'></canvas></div>`;
+                    } else {
+                         cardHTML += `<div id="${cardSpecificIds.growthView}" style="display:none;"><p class="mt-2 text-sm text-[var(--text-secondary)] text-center">Future projection not applicable.</p></div>`;
+                    }
+                }
+                cardHTML += `</div></div></div>`; 
+                recommendationsContainer.innerHTML += cardHTML;
+            });
+            
+            document.querySelectorAll('.fade-in-on-scroll').forEach(el => fadeInObserver.observe(el));
+            
+            percentages.forEach((_, index) => {
+                 const cardSpecificIds = { 
+                    visualizeBtn: `visualizeBtn${index}`, 
+                    chartsWrapper: `chartsWrapper${index}`, 
+                    taxView: `taxSavingsView${index}`, 
+                    growthView: `growthChartView${index}`,
+                    toggleBtn: `toggleChartViewBtn${index}`
+                };
+                attachCardEventListeners(index, cardSpecificIds);
             });
 
+            document.querySelectorAll('.recommendation-card').forEach(card => cardObserver.observe(card));
+
             const generalPromptContentEl = document.getElementById('generalAnnuityPromptContent');
-            if (quoteIntervalId) {
-                clearInterval(quoteIntervalId);
-            }
+            if (quoteIntervalId) clearInterval(quoteIntervalId);
             displayRandomQuote(); 
             quoteIntervalId = setInterval(displayRandomQuote, QUOTE_INTERVAL_MS); 
 
             if (incomeTaxAnnual <= 0.01) { 
-                generalPromptContentEl.innerHTML = `
-                    <h3 class="bento-section-title text-lg text-[var(--success-color)] mt-3 mb-2">Why Other Annuities Are Still Great (Even Without Upfront Tax Cuts!):</h3>
-                    <p class="text-[var(--text-secondary)] text-sm">These annuities are still your friends for building future money:</p>
-                    <ul class="list-disc list-inside ml-4 mt-2 space-y-1 text-sm text-[var(--text-secondary)]">
-                        <li><strong>Savings on Autopilot:</strong> Makes saving for your future easy peasy.</li>
-                        <li><strong>Growth Potential:</strong> Your money can still grow over time, often tax-deferred (pay tax on growth later).</li>
-                        <li><strong>Chill Retirement Income:</strong> Helps ensure you have cash flow when you're ready to relax.</li>
-                        <li><strong>Compound Magic:</strong> Start early, even small bits, and watch it grow like a boss!</li>
-                    </ul>
-                    <p class="mt-3 text-[var(--text-secondary)] text-sm font-semibold">Chat with an advisor to see how this fits your big financial picture!</p>
-                `;
+                generalPromptContentEl.innerHTML = `<h3 class="bento-section-title text-lg text-[var(--success-color)] mt-3 mb-2">Why Other Annuities Are Still Great:</h3><ul class="list-disc list-inside ml-4 mt-2 space-y-1 text-sm text-[var(--text-secondary)]"><li><strong>Savings on Autopilot:</strong> Makes saving easy.</li><li><strong>Growth Potential:</strong> Your money can still grow over time.</li><li><strong>Chill Retirement Income:</strong> Helps ensure you have cash flow when you relax.</li></ul>`;
             } else { 
-                 generalPromptContentEl.innerHTML = `
-                    <h3 class="bento-section-title text-lg text-[var(--success-color)] mt-3 mb-2">Registered Plans: Save on Taxes & Grow Your Future!</h3>
-                    <p class="text-[var(--text-secondary)] text-sm">Paying taxes? Registered plans are a win-win: save for retirement AND lower your taxes today!</p>
-                    <ul class="list-disc list-inside ml-4 mt-2 space-y-1 text-sm text-[var(--text-secondary)]">
-                        <li><strong>Tax Slash, Right Now:</strong> Contributions are tax-deductible (up to limits), meaning less tax today!</li>
-                        <li><strong>Tax-Free Growth Zone:</strong> Your investment grows without tax eating into it until retirement.</li>
-                        <li><strong>Retirement Payday, Guaranteed:</strong> Get a steady income when you kick back and relax.</li>
-                        <li><strong>Bonus Cash (Tax-Free!):</strong> Often, you can take out a chunk (like 25%) tax-free at retirement.</li>
-                    </ul>
-                    <p class="mt-3 text-[var(--text-secondary)] text-sm font-semibold">Let's optimize your annuity strategy. Talk to a pro!</p>
-                `;
+                 generalPromptContentEl.innerHTML = `<h3 class="bento-section-title text-lg text-[var(--success-color)] mt-3 mb-2">Why Registered Plans are a Win-Win:</h3><ul class="list-disc list-inside ml-4 mt-2 space-y-1 text-sm text-[var(--text-secondary)]"><li><strong>Tax Slash, Right Now:</strong> Contributions are tax-deductible (up to limits).</li><li><strong>Tax-Free Growth Zone:</strong> Your investment grows without tax eating into it.</li><li><strong>Bonus Cash (Tax-Free!):</strong> Often, you can take out a chunk tax-free at retirement.</li></ul>`;
             }
-
-            const unregAnnuityInsightEl = document.getElementById('unregisteredAnnuityInsight');
-            if (unregAnnuityInsightEl) {
-                unregAnnuityInsightEl.innerHTML = ''; 
-                unregAnnuityInsightEl.style.display = 'none'; 
-            }
+            return true;
         }
         
-        // --- THEME TOGGLE FUNCTIONALITY ---
         function initializeTheme() {
             const savedTheme = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -1703,30 +1574,20 @@
                     const colors = getChartColors(); 
                     
                     if (chart.config.type === 'pie') {
-                        let currentLabels = chart.data.labels;
-                        if(currentLabels.length === 2 && currentLabels[0] === 'Total PAYE'){ 
-                             chart.data.datasets[0].backgroundColor = [colors.pie.payeEmphasis, colors.pie.takeHome];
-                             chart.data.datasets[0].borderColor = Array(2).fill(colors.pie.borderColor);
-                        } else { 
-                             chart.data.datasets[0].backgroundColor = [colors.pie.healthSurcharge, colors.pie.nis, colors.pie.incomeTax, colors.pie.takeHome];
-                             chart.data.datasets[0].borderColor = Array(4).fill(colors.pie.borderColor);
-                        }
+                        chart.data.datasets[0].backgroundColor = chart.data.labels.length === 2 
+                            ? [colors.pie.paye, colors.pie.takeHome] 
+                            : [colors.pie.nisHealth, colors.pie.incomeTax, colors.pie.takeHome];
+                        chart.data.datasets[0].borderColor = Array(chart.data.datasets[0].data.length).fill(colors.pie.borderColor);
                         if(chart.options.plugins.title) chart.options.plugins.title.color = colors.textPrimaryColor;
                         if(chart.options.plugins.legend.labels) chart.options.plugins.legend.labels.color = colors.textSecondaryColor;
-                        if(chart.options.plugins.datalabels) chart.options.plugins.datalabels.color = '#fff'; 
-
                     } else if (chart.config.type === 'line') {
                         chart.data.datasets.forEach((dataset, i) => {
                             if (i === 0) { 
                                 dataset.borderColor = colors.line.borderColor;
                                 dataset.backgroundColor = colors.line.backgroundColor;
-                                dataset.pointBackgroundColor = colors.line.pointBackgroundColor;
-                                dataset.pointBorderColor = colors.line.pointBorderColor;
                             } else { 
                                 dataset.borderColor = colors.line.borderColorAlt;
                                 dataset.backgroundColor = colors.line.backgroundColorAlt;
-                                dataset.pointBackgroundColor = colors.line.borderColorAlt; 
-                                dataset.pointBorderColor = colors.line.pointBorderColor;
                             }
                         });
                         if(chart.options.plugins.title) chart.options.plugins.title.color = colors.textPrimaryColor;
@@ -1744,38 +1605,74 @@
             themeToggle.addEventListener('change', toggleTheme);
         }
         
-        // --- EVENT LISTENERS FOR INPUTS & BUTTONS ---
-        const calculateButtonEl = document.getElementById('calculateButton');
-        if (calculateButtonEl) {
-            calculateButtonEl.addEventListener('click', () => {
-                performFullCalculation(); 
-                if (!window.initialCalculationPerformed && !resultsSection.classList.contains('hidden') && parseFloat(grossIncomeInput.value) > 0) { 
-                    window.initialCalculationPerformed = true;
-                    // Button text is set inside performFullCalculation
-                }
-                 // Auto-scroll to results on all devices after successful calculation
-                if (resultsSection && !resultsSection.classList.contains('hidden') && parseFloat(grossIncomeInput.value) > 0) {
-                    resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+        if (calculateButton) {
+            calculateButton.addEventListener('click', () => {
+                const originalButtonText = window.initialCalculationPerformed ? 'Update My Plan' : 'Show Me My Plan!';
+                
+                if (!ageInput.value) { showAlert('Please enter your age.'); return; }
+                if (!grossIncomeInput.value) { showAlert('Please enter your gross pay.'); return; }
+
+                calculateButton.textContent = 'Calculating...';
+                calculateButton.disabled = true;
+
+                setTimeout(() => {
+                    let success = false;
+                    try {
+                        success = performFullCalculation();
+                    } catch(e) {
+                         console.error("Calculation failed:", e);
+                         showAlert("An unexpected error occurred. Please check your inputs.");
+                         success = false;
+                    } finally {
+                        if (success) {
+                            calculateButton.textContent = 'Update My Plan';
+                            window.initialCalculationPerformed = true;
+                            // Delay scroll to allow layout to reflow
+                            setTimeout(() => {
+                                smoothScrollTo(resultsSection);
+                            }, 50);
+                        } else {
+                            calculateButton.textContent = originalButtonText;
+                        }
+                        calculateButton.disabled = false;
+                    }
+                }, 50);
             });
         }
         
-        const financialInputsForButtonUpdate = [
-            ageInput, incomeFrequencySelect, grossIncomeInput, hasAnnuityProductSelect, 
-            companyPensionInput, companyPensionPercentageInput, personalAnnuityInput
-        ];
+        function smoothScrollTo(targetElement) {
+            if (!targetElement) return;
+            
+            const navHeight = (stickyNav.classList.contains('is-visible') && window.innerWidth >= 768) ? stickyNav.offsetHeight : 0;
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - navHeight - 24; 
 
-        financialInputsForButtonUpdate.forEach(input => {
-            if(input) {
-                const eventType = input.tagName.toLowerCase() === 'select' ? 'change' : 'input';
-                input.addEventListener(eventType, () => {
-                    if (window.initialCalculationPerformed && calculateButton) {
-                        calculateButton.textContent = "UPDATE MY PLAN";
-                    }
-                });
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
+        }
+
+        document.addEventListener('click', function (event) {
+            if (event.target && event.target.id === 'visualizePayBtn') {
+                smoothScrollTo(document.getElementById('overallPayeChartSection'));
             }
-        });
+            if(event.target && event.target.classList.contains('js-scroll-to-annuity')) {
+                smoothScrollTo(document.getElementById('annuityInsightsSection'));
+            }
+        }, false);
         
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                smoothScrollTo(targetSection);
+            });
+        });
+
+
         if (hasAnnuityProductSelect) {
             hasAnnuityProductSelect.addEventListener('change', function() {
                 const hasAnnuity = this.value === 'yes';
@@ -1855,10 +1752,10 @@
             if (window.innerWidth < 768) {
                 const viewportMeta = document.querySelector('meta[name="viewport"]');
                 if (viewportMeta) {
-                    viewportMeta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0'; 
+                    viewportMeta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0';
                     setTimeout(() => {
-                        viewportMeta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'; 
-                    }, 300); 
+                        viewportMeta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+                    }, 300);
                 }
             }
         }
@@ -1868,86 +1765,133 @@
                 const contentId = toggle.getAttribute('data-toggle');
                 const content = document.getElementById(contentId);
                 const icon = toggle.querySelector('svg');
-                if (content.classList.contains('hidden')) {
-                    content.classList.remove('hidden');
-                    icon.style.transform = 'rotate(180deg)';
-                } else {
-                    content.classList.add('hidden');
-                    icon.style.transform = 'rotate(0deg)';
+                
+                if(content && icon) {
+                    content.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
                 }
             });
         });
 
-        // --- Back to Top and Mobile Scroll Hide/Show ---
-        let mobileScrollTimeout;
-        const allMobileFloatingButtons = document.querySelectorAll('.mobile-floating-button'); 
-
-        function handleScrollEffects() {
-            const isMobile = window.innerWidth < 768;
-            let showBTT = (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 200);
-
-            if (backToTopButton) {
-                if (showBTT) {
-                    backToTopButton.classList.remove('opacity-0', 'invisible', 'hidden-by-scroll'); 
-                    backToTopButton.classList.add('opacity-100', 'visible');
-                } else {
-                    backToTopButton.classList.remove('opacity-100', 'visible');
-                    backToTopButton.classList.add('opacity-0', 'invisible');
-                    if (isMobile) backToTopButton.classList.add('hidden-by-scroll');
+        const fadeInObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting){
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
                 }
-            }
+            });
+        }, { threshold: 0.1 });
 
-            if (isMobile) {
-                allMobileFloatingButtons.forEach(btn => {
-                    if (btn.id === 'backToTopButton') { 
-                        if (showBTT) btn.classList.add('hidden-by-scroll'); 
+        const chartObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const canvas = entry.target;
+                    renderCanvasChart(canvas);
+                    observer.unobserve(canvas);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        const cardObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                 if (entry.isIntersecting) {
+                    const card = entry.target;
+                    const btn = card.querySelector('button[id^="visualizeBtn"]');
+                    const chartsWrapper = card.querySelector('.charts-view-wrapper');
+                    if (btn && chartsWrapper && !chartsWrapper.classList.contains('is-visible')) {
+                        btn.click();
                     }
-                });
-                
-                clearTimeout(mobileScrollTimeout);
-                mobileScrollTimeout = setTimeout(function() {
-                    allMobileFloatingButtons.forEach(btn => {
-                         if (btn.id === 'backToTopButton') {
-                           if (showBTT) btn.classList.remove('hidden-by-scroll');
-                           else { 
-                               btn.classList.remove('visible', 'opacity-100');
-                               btn.classList.add('opacity-0', 'invisible', 'hidden-by-scroll');
-                           }
-                        }
-                    });
-                }, 250);
-            } else { 
-                 allMobileFloatingButtons.forEach(btn => {
-                     btn.classList.remove('hidden-by-scroll');
-                 });
-            }
-        }
-
-
-        if (backToTopButton) {
-            backToTopButton.addEventListener('click', () => {
-                 if(financialDetailsBox) {
-                     financialDetailsBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                 } else {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    observer.unobserve(card);
                  }
+            });
+        }, { rootMargin: "0px 0px -25% 0px", threshold: 0.01 });
+
+        const stickyNavObserver = new IntersectionObserver(
+            ([entry]) => {
+                if (window.innerWidth >= 768) {
+                    stickyNav.classList.toggle('is-visible', !entry.isIntersecting);
+                }
+            },
+            { rootMargin: "200px 0px 0px 0px" }
+        );
+        
+        function handleScrollNudgeVisibility() {
+            if (!scrollNudgeEl || !mainCtaEl) return;
+
+            clearTimeout(scrollTimeout);
+            scrollNudgeEl.classList.add('opacity-0');
+
+            scrollTimeout = setTimeout(() => {
+                if (!window.initialCalculationPerformed) return;
+
+                const ctaRect = mainCtaEl.getBoundingClientRect();
+                const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 50;
+
+                const shouldBeHidden = ctaRect.top < window.innerHeight || isAtBottom;
+
+                if (!shouldBeHidden) {
+                    scrollNudgeEl.classList.remove('opacity-0');
+                }
+
+            }, 2500); 
+        }
+        
+        function updateActiveNavLink() {
+            if (window.innerWidth < 768) return;
+
+            let maxVisibility = 0;
+            let activeSectionId = '';
+            
+            const sectionsToTrack = [
+                document.getElementById('resultsSection'),
+                document.getElementById('annuityInsightsSection'),
+                document.getElementById('main-cta'),
+                document.getElementById('legalSection')
+            ].filter(Boolean);
+
+            sectionsToTrack.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                const visibleHeight = Math.max(0, Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0));
+
+                if (visibleHeight > maxVisibility) {
+                    maxVisibility = visibleHeight;
+                    activeSectionId = section.id;
+                }
+            });
+
+            navLinks.forEach(link => {
+                const linkHref = link.getAttribute('href').substring(1);
+                if (linkHref === activeSectionId) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
             });
         }
 
-        // Initial setup calls on page load
+
         window.addEventListener('load', () => {
-            adjustBentoLayout();
-            updateFrequencySpecificText(capitalizeFirstLetter(incomeFrequencySelect.value)); 
-            initializeTheme(); 
-            handleScrollEffects(); 
-            window.addEventListener('scroll', handleScrollEffects); 
-        }); 
+            initializeTheme();
+            
+            document.querySelectorAll('.hidden-section').forEach(el => el.style.display = 'none');
+            
+            document.querySelectorAll('.fade-in-on-scroll').forEach(section => {
+                fadeInObserver.observe(section);
+            });
+            
+            if (pageHeader) {
+                stickyNavObserver.observe(pageHeader);
+            }
+            
+            window.addEventListener('scroll', handleScrollNudgeVisibility, { passive: true });
+            window.addEventListener('scroll', updateActiveNavLink, { passive: true });
+        });
+
         window.addEventListener('resize', () => {
-            adjustBentoLayout();
-            updateFrequencySpecificText(capitalizeFirstLetter(incomeFrequencySelect.value)); 
-            updateExistingCharts(); 
-            handleScrollEffects(); 
+             updateActiveNavLink();
+             updateExistingCharts();
         }); 
+
     </script>
 </body>
 </html>
